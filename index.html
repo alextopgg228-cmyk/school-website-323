@@ -5,192 +5,248 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ОГБОУ «Центр образования для детей с особыми образовательными потребностями г. Смоленска»</title>
 <style>
-  :root {
-    --blue: #1a4b8c;
-    --blue-light: #2563c0;
-    --blue-pale: #e8f0fb;
-    --accent: #e05c1a;
-    --text: #1e1e1e;
-    --text-muted: #5a6070;
-    --bg: #f7f8fc;
-    --white: #ffffff;
-    --border: #d5dde8;
-    --success: #2d7a4f;
-    --success-bg: #eaf5ee;
-    --radius: 8px;
-    --shadow: 0 2px 10px rgba(0,0,0,.08);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+:root{--blue:#1a4b8c;--blue-light:#2563c0;--blue-pale:#e8f0fb;--accent:#e05c1a;--red:#c0392b;--text:#1e1e1e;--muted:#5a6070;--bg:#f7f8fc;--white:#fff;--border:#d5dde8;--ok:#2d7a4f;--ok-bg:#eaf5ee;--r:8px;--sh:0 2px 10px rgba(0,0,0,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
 
-  /* HEADER */
-  header { background: var(--blue); color: #fff; }
-  .header-top { display: flex; align-items: center; gap: 16px; padding: 14px 32px; }
-  .header-logo { width: 54px; height: 54px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .header-logo span { font-size: 22px; }
-  .header-title h1 { font-size: 16px; font-weight: 700; line-height: 1.3; }
-  .header-title p  { font-size: 12px; opacity: .8; margin-top: 2px; }
-  .header-contacts { margin-left: auto; text-align: right; font-size: 13px; opacity: .9; }
-  .header-contacts a { color: #fff; text-decoration: none; }
-  .header-auth-btn { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; margin-left: 12px; }
-  .header-auth-btn:hover { background: rgba(255,255,255,.28); }
+/* HEADER */
+header{background:var(--blue);color:#fff}
+.hdr{display:flex;align-items:center;gap:16px;padding:13px 32px}
+.hdr-logo{width:52px;height:52px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+.hdr-title h1{font-size:15px;font-weight:700;line-height:1.3}
+.hdr-title p{font-size:11px;opacity:.8;margin-top:2px}
+.hdr-contacts{margin-left:auto;text-align:right;font-size:13px;opacity:.9}
+.hdr-contacts a{color:#fff;text-decoration:none}
+.auth-btn{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:13px;margin-left:12px;white-space:nowrap}
+.auth-btn:hover{background:rgba(255,255,255,.28)}
 
-  /* NAV */
-  nav { background: var(--blue-light); }
-  nav ul { display: flex; flex-wrap: wrap; list-style: none; padding: 0 24px; }
-  nav ul li a { display: block; color: #fff; text-decoration: none; padding: 11px 14px; font-size: 13.5px; transition: background .15s; }
-  nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,.15); }
+/* NAV */
+nav{background:var(--blue-light)}
+nav ul{display:flex;flex-wrap:wrap;list-style:none;padding:0 20px}
+nav ul li a{display:block;color:#fff;text-decoration:none;padding:10px 13px;font-size:13px;transition:background .15s}
+nav ul li a:hover,nav ul li a.active{background:rgba(255,255,255,.15)}
 
-  /* USER BAR */
-  .user-bar { background: var(--blue-pale); border-bottom: 1px solid var(--border); padding: 7px 32px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
-  .user-bar .role-badge { background: var(--blue); color: #fff; border-radius: 12px; padding: 2px 10px; font-size: 11.5px; font-weight: 600; }
-  .user-bar .role-badge.admin { background: var(--accent); }
-  .user-bar .logout-btn { margin-left: auto; background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
-  .user-bar .logout-btn:hover { border-color: var(--accent); color: var(--accent); }
+/* USER BAR */
+.user-bar{background:var(--blue-pale);border-bottom:1px solid var(--border);padding:6px 32px;display:flex;align-items:center;gap:10px;font-size:13px}
+.role-badge{background:var(--blue);color:#fff;border-radius:12px;padding:2px 10px;font-size:11px;font-weight:700}
+.role-badge.admin{background:var(--accent)}
+.role-badge.teacher{background:var(--ok)}
+.logout-btn{margin-left:auto;background:none;border:1px solid var(--border);color:var(--muted);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.logout-btn:hover{border-color:var(--accent);color:var(--accent)}
 
-  /* MAIN */
-  main { max-width: 1100px; margin: 0 auto; padding: 28px 24px 48px; }
-  .page { display: none; }
-  .page.active { display: block; }
+/* LAYOUT */
+main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
+.page{display:none}.page.active{display:block}
 
-  /* HERO */
-  .hero { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); color: #fff; border-radius: var(--radius); padding: 40px 36px; margin-bottom: 28px; }
-  .hero h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .hero p  { font-size: 16px; opacity: .9; max-width: 600px; line-height: 1.65; }
-  .hero .hero-since { margin-top: 18px; font-size: 13px; opacity: .7; border-top: 1px solid rgba(255,255,255,.25); padding-top: 12px; }
+/* ── HERO SPLIT ── */
+.hero-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--r);overflow:hidden;margin-bottom:24px;box-shadow:var(--sh)}
+.hero-left{background:linear-gradient(135deg,#1a4b8c 0%,#2563c0 100%);color:#fff;padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+.hero-left h2{font-size:26px;font-weight:800;line-height:1.25;margin-bottom:14px}
+.hero-left p{font-size:14px;opacity:.9;line-height:1.7;margin-bottom:20px}
+.hero-left .hero-btn{display:inline-block;background:#fff;color:var(--blue);border:none;padding:10px 22px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;width:fit-content}
+.hero-left .hero-since{margin-top:18px;font-size:12px;opacity:.6;border-top:1px solid rgba(255,255,255,.2);padding-top:10px}
+.hero-right{background:#dde8f5;display:flex;align-items:center;justify-content:center;min-height:220px;overflow:hidden;position:relative}
+.hero-right svg{width:100%;height:100%;position:absolute;inset:0}
+.hero-right .gosuslugi-label{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;line-height:1.3}
+.hero-right .gosuslugi-label span{color:var(--blue-light)}
 
-  /* CARDS GRID */
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; margin-bottom: 28px; }
-  .card { background: var(--white); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; box-shadow: var(--shadow); transition: box-shadow .2s; cursor: pointer; }
-  .card:hover { box-shadow: 0 4px 18px rgba(26,75,140,.13); }
-  .card .card-icon { font-size: 28px; margin-bottom: 10px; }
-  .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--blue); }
-  .card p  { font-size: 13px; color: var(--text-muted); }
+/* ── QUICK CARDS ── */
+.qcards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+.qcard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 12px;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:box-shadow .2s,transform .15s}
+.qcard:hover{box-shadow:0 4px 18px rgba(26,75,140,.14);transform:translateY(-2px)}
+.qcard .qi{font-size:26px;margin-bottom:8px}
+.qcard h3{font-size:12.5px;font-weight:700;color:var(--blue);line-height:1.3}
 
-  /* SECTION */
-  .section-title { font-size: 22px; font-weight: 700; color: var(--blue); margin-bottom: 18px; padding-bottom: 8px; border-bottom: 2px solid var(--blue-pale); }
-  .section-sub   { font-size: 13px; color: var(--text-muted); margin-top: -12px; margin-bottom: 18px; }
+/* ── BANNERS ROW ── */
+.banners-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.banner{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);position:relative;cursor:pointer;min-height:90px;display:flex;align-items:center}
+.banner-unity{background:linear-gradient(135deg,#fff 60%,#f0f4ff 100%);border:1px solid #cdd6e8;padding:16px 20px}
+.banner-unity .by{font-size:36px;font-weight:900;color:var(--blue);line-height:1}
+.banner-unity .bt{font-size:13px;font-weight:800;color:var(--red);line-height:1.2;margin-top:4px}
+.banner-unity .bs{font-size:10px;color:var(--blue);font-weight:700;letter-spacing:.04em;opacity:.7;margin-top:2px}
+.banner-unity .flag-stripe{position:absolute;right:0;top:0;bottom:0;width:6px;background:linear-gradient(to bottom,#fff 33%,#0039a6 33% 66%,#d52b1e 66%)}
+.banner-ministry{background:linear-gradient(135deg,#f5f7fc 0%,#e8eef8 100%);border:1px solid #cdd6e8;padding:16px 20px;gap:14px}
+.banner-ministry .bm-logo{font-size:28px}
+.banner-ministry .bm-text{flex:1}
+.banner-ministry .bm-text h4{font-size:11px;font-weight:700;color:var(--blue);line-height:1.3;text-transform:uppercase;letter-spacing:.04em}
+.banner-ministry .bm-tag{font-size:18px;font-weight:900;color:var(--blue);margin-top:4px}
 
-  /* NEWS */
-  .news-list { display: flex; flex-direction: column; gap: 16px; }
-  .news-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow); }
-  .news-item .news-date { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
-  .news-item h3 { font-size: 16px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
-  .news-item p { font-size: 14px; color: var(--text); }
+/* ── SURVEY BANNERS ── */
+.survey-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.survey-card{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);display:flex;align-items:stretch;cursor:pointer;transition:opacity .2s}
+.survey-card:hover{opacity:.9}
+.survey-icon{background:linear-gradient(135deg,#1a4b8c,#2563c0);width:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px}
+.survey-body{background:linear-gradient(135deg,#1e56a0,#2871d6);flex:1;padding:12px 16px}
+.survey-body .survey-title{font-size:15px;font-weight:900;color:#fff;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
+.survey-body .survey-title .sarrow{font-size:18px;margin-left:auto;opacity:.8}
+.survey-body .survey-sub{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.75);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
 
-  /* TABLE */
-  .data-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; }
-  .data-table th { background: var(--blue); color: #fff; text-align: left; padding: 11px 14px; font-size: 13px; font-weight: 600; }
-  .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--blue-pale); font-size: 13.5px; }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:hover td { background: var(--blue-pale); }
+/* ── NEWS HOME ── */
+.home-news-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.news-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;box-shadow:var(--sh)}
+.news-date{font-size:11px;color:var(--muted);margin-bottom:5px}
+.news-item h3{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:7px}
+.news-item p{font-size:13px;color:var(--text);line-height:1.6}
+.news-featured{grid-column:span 2}
+.news-list{display:flex;flex-direction:column;gap:14px}
 
-  /* TEACHER CARDS */
-  .teacher-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
-  .teacher-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; text-align: center; box-shadow: var(--shadow); }
-  .teacher-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; overflow: hidden; }
-  .teacher-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .teacher-card h4 { font-size: 13.5px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
-  .teacher-card .teacher-job { font-size: 12px; color: var(--text-muted); }
-  .teacher-card .teacher-phone { font-size: 12px; color: var(--accent); margin-top: 6px; }
+/* ── SECTION ── */
+.section-title{font-size:21px;font-weight:700;color:var(--blue);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--blue-pale)}
+.section-sub{font-size:13px;color:var(--muted);margin-top:-10px;margin-bottom:16px}
 
-  /* HOT LINES */
-  .hotlines { display: flex; flex-direction: column; gap: 10px; max-width: 680px; }
-  .hotline-row { display: flex; justify-content: space-between; align-items: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 18px; }
-  .hotline-row .hl-topic { font-size: 13.5px; color: var(--text); }
-  .hotline-row .hl-phone { font-size: 14px; font-weight: 700; color: var(--blue); white-space: nowrap; margin-left: 16px; }
+/* ── STATS BAR ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.stat-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 16px;text-align:center;box-shadow:var(--sh)}
+.stat-num{font-size:32px;font-weight:900;color:var(--blue)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
 
-  /* CONTACTS */
-  .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 720px; }
-  .contact-block { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-  .contact-block h4 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
-  .contact-block p  { font-size: 13.5px; color: var(--text-muted); margin-bottom: 6px; }
-  .contact-block a  { color: var(--blue-light); text-decoration: none; }
+/* ── TEACHER PAGE ── */
+.teacher-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.flt-btn{background:var(--white);border:1px solid var(--border);color:var(--muted);padding:6px 16px;border-radius:20px;cursor:pointer;font-size:13px;transition:all .15s}
+.flt-btn:hover,.flt-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.teacher-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.teacher-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;transition:box-shadow .2s}
+.teacher-card:hover{box-shadow:0 6px 22px rgba(26,75,140,.14)}
+.tc-top{background:linear-gradient(135deg,var(--blue-pale) 0%,#d0dff5 100%);padding:24px 16px;display:flex;flex-direction:column;align-items:center}
+.tc-avatar{width:80px;height:80px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.12);margin-bottom:12px;overflow:hidden}
+.tc-avatar img,.dir-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.tc-name{font-size:13.5px;font-weight:700;color:var(--blue);text-align:center;line-height:1.35}
+.tc-body{padding:14px 16px}
+.tc-job{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.tc-bio{font-size:12.5px;color:var(--text);line-height:1.6;margin-bottom:10px}
+.tc-phone{font-size:12.5px;color:var(--blue-light);font-weight:700}
+.tc-exp{display:inline-block;background:var(--blue-pale);color:var(--blue);border-radius:12px;padding:2px 10px;font-size:11px;font-weight:700;margin-bottom:6px}
+.tc-subjects{font-size:12px;color:var(--muted)}
+.tc-subjects span{display:inline-block;background:#f0f4ff;border:1px solid #c5d4ee;border-radius:12px;padding:2px 9px;margin:2px 2px 0 0;font-size:11px;color:var(--blue)}
 
-  /* SCHEDULE */
-  .schedule-day { margin-bottom: 22px; }
-  .schedule-day h4 { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+/* ── DIRECTOR BLOCK ── */
+.director-block{display:grid;grid-template-columns:auto 1fr;gap:24px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--sh);margin-bottom:28px;align-items:start}
+.dir-avatar{width:110px;height:110px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.dir-info h3{font-size:19px;font-weight:700;color:var(--blue);margin-bottom:4px}
+.dir-info .dir-role{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:10px}
+.dir-info p{font-size:13.5px;line-height:1.7;color:var(--text)}
+.dir-info .dir-contact{margin-top:12px;font-size:13px;color:var(--blue-light)}
 
-  /* AUTH MODAL */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 1000; display: flex; align-items: center; justify-content: center; }
-  .modal-overlay.hidden { display: none; }
-  .modal { background: var(--white); border-radius: 12px; padding: 36px 32px; width: 380px; box-shadow: 0 8px 40px rgba(0,0,0,.18); }
-  .modal h2 { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
-  .modal .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
-  .modal label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
-  .modal input { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; margin-bottom: 16px; outline: none; }
-  .modal input:focus { border-color: var(--blue-light); box-shadow: 0 0 0 3px rgba(37,99,192,.12); }
-  .modal .btn-primary { width: 100%; background: var(--blue); color: #fff; border: none; padding: 12px; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; }
-  .modal .btn-primary:hover { background: var(--blue-light); }
-  .modal .modal-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
-  .modal .tab-btn { flex: 1; padding: 9px; background: none; border: none; cursor: pointer; font-size: 13.5px; color: var(--text-muted); }
-  .modal .tab-btn.active { background: var(--blue); color: #fff; font-weight: 600; }
-  .modal .close-btn { float: right; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); margin-top: -6px; }
-  .modal .error-msg { background: #fdecea; color: #c0392b; border-radius: 6px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; }
-  .modal .success-msg { background: var(--success-bg); color: var(--success); border-radius: 6px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; }
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:22px}
+.data-table th{background:var(--blue);color:#fff;text-align:left;padding:10px 14px;font-size:13px;font-weight:600}
+.data-table td{padding:9px 14px;border-bottom:1px solid var(--blue-pale);font-size:13px}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--blue-pale)}
 
-  /* ADMIN PANEL */
-  .admin-section { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 20px; box-shadow: var(--shadow); }
-  .admin-section h3 { font-size: 16px; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
-  .admin-form label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; margin-top: 10px; font-weight: 600; }
-  .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; outline: none; }
-  .admin-form textarea { height: 80px; resize: vertical; font-family: inherit; }
-  .admin-form input:focus, .admin-form textarea:focus, .admin-form select:focus { border-color: var(--blue-light); }
-  .btn { padding: 9px 20px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; }
-  .btn-primary { background: var(--blue); color: #fff; }
-  .btn-primary:hover { background: var(--blue-light); }
-  .btn-danger  { background: #e74c3c; color: #fff; }
-  .btn-danger:hover { background: #c0392b; }
-  .btn-sm { padding: 5px 12px; font-size: 12px; }
-  .mt-12 { margin-top: 12px; }
-  .gap-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+/* HOT LINES */
+.hotlines{display:flex;flex-direction:column;gap:10px;max-width:700px}
+.hotline-row{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 18px}
+.hl-topic{font-size:13.5px;color:var(--text)}
+.hl-phone{font-size:14px;font-weight:700;color:var(--blue);white-space:nowrap;margin-left:16px}
 
-  /* ABOUT */
-  .about-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); max-width: 820px; }
-  .about-box p { margin-bottom: 14px; font-size: 14.5px; line-height: 1.75; }
-  .about-directions { background: var(--blue-pale); border-left: 3px solid var(--blue); padding: 16px 20px; border-radius: 6px; margin: 18px 0; }
-  .about-directions li { margin-bottom: 6px; font-size: 14px; }
+/* CONTACTS */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:740px}
+.contact-block{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.contact-block h4{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:10px}
+.contact-block p{font-size:13.5px;color:var(--muted);margin-bottom:5px}
+.contact-block a{color:var(--blue-light);text-decoration:none}
+#page-contacts .hero-split{margin-top:24px;margin-bottom:0}
 
-  /* FOOTER */
-  footer { background: var(--blue); color: #fff; padding: 28px 32px; margin-top: 40px; }
-  .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; }
-  footer h4 { font-size: 13px; font-weight: 700; opacity: .7; margin-bottom: 10px; text-transform: uppercase; letter-spacing: .05em; }
-  footer p, footer a { font-size: 13px; opacity: .85; color: #fff; text-decoration: none; display: block; margin-bottom: 5px; }
-  footer a:hover { opacity: 1; text-decoration: underline; }
-  .footer-bottom { border-top: 1px solid rgba(255,255,255,.2); margin-top: 20px; padding-top: 14px; text-align: center; font-size: 12px; opacity: .6; }
+/* SCHEDULE */
+.schedule-day{margin-bottom:22px}
+.schedule-day h4{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:10px}
 
-  @media (max-width: 680px) {
-    .header-top { padding: 12px 16px; flex-wrap: wrap; }
-    .header-contacts { display: none; }
-    main { padding: 18px 14px 36px; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .contacts-grid { grid-template-columns: 1fr; }
-    nav ul { padding: 0 8px; }
-    nav ul li a { padding: 9px 10px; font-size: 12.5px; }
-    .hero { padding: 24px 20px; }
-    .hero h2 { font-size: 20px; }
-  }
+/* ABOUT */
+.about-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;box-shadow:var(--sh);max-width:860px}
+.about-box p{margin-bottom:14px;font-size:14.5px;line-height:1.75}
+.about-directions{background:var(--blue-pale);border-left:3px solid var(--blue);padding:16px 20px;border-radius:6px;margin:18px 0}
+.about-directions li{margin-bottom:6px;font-size:14px}
+
+/* AUTH MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;display:flex;align-items:center;justify-content:center}
+.modal-overlay.hidden{display:none}
+.modal{background:var(--white);border-radius:12px;padding:36px 32px;width:380px;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.modal h2{font-size:20px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.modal .msub{font-size:13px;color:var(--muted);margin-bottom:22px}
+.modal label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.modal input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;margin-bottom:14px;outline:none}
+.modal input:focus{border-color:var(--blue-light);box-shadow:0 0 0 3px rgba(37,99,192,.12)}
+.mbtn{width:100%;background:var(--blue);color:#fff;border:none;padding:12px;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer}
+.mbtn:hover{background:var(--blue-light)}
+.mtabs{display:flex;margin-bottom:22px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.mtab{flex:1;padding:9px;background:none;border:none;cursor:pointer;font-size:13.5px;color:var(--muted)}
+.mtab.active{background:var(--blue);color:#fff;font-weight:600}
+.close-x{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);margin-top:-6px}
+.merr{background:#fdecea;color:var(--red);border-radius:6px;padding:10px 14px;font-size:13px;margin-bottom:12px}
+.msuc{background:var(--ok-bg);color:var(--ok);border-radius:6px;padding:10px 14px;font-size:13px;margin-bottom:12px}
+
+/* ADMIN */
+.adm-section{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:18px;box-shadow:var(--sh)}
+.adm-section h3{font-size:16px;font-weight:700;color:var(--blue);margin-bottom:14px}
+.af label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;margin-top:10px;font-weight:600}
+.af input,.af textarea,.af select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;outline:none}
+.af textarea{height:80px;resize:vertical;font-family:inherit}
+.af input:focus,.af textarea:focus,.af select:focus{border-color:var(--blue-light)}
+.btn{padding:9px 20px;border-radius:6px;border:none;cursor:pointer;font-size:14px;font-weight:600}
+.btn-p{background:var(--blue);color:#fff}
+.btn-p:hover{background:var(--blue-light)}
+.btn-d{background:#e74c3c;color:#fff}
+.btn-d:hover{background:var(--red)}
+.btn-sm{padding:5px 12px;font-size:12px}
+.mt12{margin-top:12px}
+.grow{display:flex;gap:10px;flex-wrap:wrap}
+.grow>div{flex:1;min-width:120px}
+
+/* FOOTER */
+footer{background:var(--blue);color:#fff;padding:28px 32px;margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:1140px;margin:0 auto}
+footer h4{font-size:12px;font-weight:700;opacity:.65;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+footer p,footer a{font-size:13px;opacity:.85;color:#fff;text-decoration:none;display:block;margin-bottom:5px}
+footer a:hover{opacity:1;text-decoration:underline}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.2);margin-top:20px;padding-top:14px;text-align:center;font-size:12px;opacity:.55}
+
+/* FEEDBACK MODAL */
+.feed-modal{background:var(--white);border-radius:12px;padding:32px;width:460px;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.feed-modal h2{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:8px}
+.feed-modal p{font-size:13px;color:var(--muted);margin-bottom:18px}
+.feed-modal textarea{width:100%;height:120px;border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:14px;font-family:inherit;resize:vertical;outline:none;margin-bottom:12px}
+.feed-modal input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;margin-bottom:12px;outline:none}
+
+@media(max-width:900px){
+  .qcards{grid-template-columns:repeat(3,1fr)}
+  .hero-split{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .banners-row,.survey-row,.home-news-grid{grid-template-columns:1fr}
+  .news-featured{grid-column:span 1}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr}
+  .contacts-grid{grid-template-columns:1fr}
+  .director-block{grid-template-columns:1fr;text-align:center}
+  .dir-avatar{margin:0 auto}
+}
+@media(max-width:600px){
+  .hdr{padding:10px 14px;flex-wrap:wrap}
+  .hdr-contacts{display:none}
+  main{padding:14px 12px 40px}
+  .qcards{grid-template-columns:repeat(2,1fr)}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .teacher-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="header-top">
-    <div class="header-logo"><span>🏫</span></div>
-    <div class="header-title">
+  <div class="hdr">
+    <div class="hdr-logo">🏫</div>
+    <div class="hdr-title">
       <h1>ОГБОУ «Центр образования для детей с особыми образовательными потребностями г. Смоленска»</h1>
       <p>Смоленская область, г. Смоленск</p>
     </div>
-    <div class="header-contacts">
+    <div class="hdr-contacts">
       <div><a href="tel:+74812528759">8 (4812) 52-87-59</a></div>
       <div><a href="mailto:spezshkola1-2@yandex.ru">spezshkola1-2@yandex.ru</a></div>
     </div>
-    <button class="header-auth-btn" id="openAuthBtn" onclick="openAuth()">🔑 Войти</button>
+    <button class="auth-btn" id="openAuthBtn" onclick="openAuth()">🔑 Войти</button>
   </div>
 </header>
 
-<!-- NAV -->
 <nav>
   <ul>
     <li><a href="#" class="active" onclick="showPage('home',this)">Главная</a></li>
@@ -206,210 +262,312 @@
   </ul>
 </nav>
 
-<!-- USER BAR -->
 <div class="user-bar" id="userBar" style="display:none">
-  <span>👤 <strong id="userBarName"></strong></span>
-  <span class="role-badge" id="userBarRole"></span>
+  <span>👤 <strong id="uName"></strong></span>
+  <span class="role-badge" id="uRole"></span>
   <button class="logout-btn" onclick="logout()">Выйти</button>
 </div>
 
-<!-- MAIN -->
 <main>
 
-  <!-- HOME -->
-  <div class="page active" id="page-home">
-    <div class="hero">
-      <h2>Школа, где дарят надежду!</h2>
-      <p>Добро пожаловать на сайт нашего центра — пространства возможностей и благополучия, где каждый ребёнок получает качественные знания и твёрдые социальные навыки, независимо от его особенностей.</p>
-      <div class="hero-since">Центр образования работает с 1990 года</div>
-    </div>
-    <div class="cards">
-      <div class="card" onclick="showPage('about', null)">
-        <div class="card-icon">🏛️</div>
-        <h3>О центре</h3>
-        <p>История, миссия и направления деятельности нашей организации</p>
-      </div>
-      <div class="card" onclick="showPage('teachers', null)">
-        <div class="card-icon">👩‍🏫</div>
-        <h3>Педагогический состав</h3>
-        <p>Терпеливый и слаженный коллектив специалистов-дефектологов</p>
-      </div>
-      <div class="card" onclick="showPage('schedule', null)">
-        <div class="card-icon">📅</div>
-        <h3>Расписание занятий</h3>
-        <p>Актуальное расписание для всех классов на неделю</p>
-      </div>
-      <div class="card" onclick="showPage('news', null)">
-        <div class="card-icon">📰</div>
-        <h3>Новости</h3>
-        <p>Последние события, достижения учеников и жизнь центра</p>
-      </div>
-      <div class="card" onclick="showPage('documents', null)">
-        <div class="card-icon">📄</div>
-        <h3>Документы</h3>
-        <p>Устав, лицензия, образовательные программы и локальные акты</p>
-      </div>
-      <div class="card" onclick="showPage('hotlines', null)">
-        <div class="card-icon">📞</div>
-        <h3>Горячие линии</h3>
-        <p>Телефоны для обращений по вопросам образования</p>
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero-split" id="feedbackBlock">
+    <div class="hero-left">
+      <h2>Есть предложения по организации учебного процесса или знаете, как сделать школу лучше?</h2>
+      <p>Центр образования открыт к диалогу. Мы работаем с 1990 года и делаем всё, чтобы каждый ребёнок с нарушением слуха получил качественное образование и социальные навыки.</p>
+      <a class="hero-btn" onclick="openFeedback()">Написать о проблеме</a>
+      <div class="hero-since">
+        <span style="font-size:11px;opacity:.75">госуслуги &nbsp;·&nbsp; Решаем вместе</span>
       </div>
     </div>
-
-    <h2 class="section-title">Последние новости</h2>
-    <div class="news-list" id="homeNewsList"></div>
-  </div>
-
-  <!-- ABOUT -->
-  <div class="page" id="page-about">
-    <h2 class="section-title">О центре</h2>
-    <div class="about-box">
-      <p>ОГБОУ «Центр образования для детей с особыми образовательными потребностями г. Смоленска» работает с <strong>1990 года</strong>. За эти годы центр стал ведущим учреждением региона по обучению и воспитанию детей с нарушением слуха.</p>
-      <p>Директор: <strong>Коткина Наталья Александровна</strong><br>
-      Телефон: <a href="tel:+74812358552">8 (4812) 35-85-52</a><br>
-      E-mail: <a href="mailto:spezshkola1-2@yandex.ru">spezshkola1-2@yandex.ru</a></p>
-      <p>Наш центр — пространство возможностей, где ребёнок получает качественные знания, твёрдые социальные навыки, погружается в атмосферу творчества. Педагогический коллектив сохраняет лучшие традиции прошлого и постоянно развивается, применяя лучшие практики и стремясь к инновациям.</p>
-      <div class="about-directions">
-        <strong>Направления деятельности:</strong>
-        <ul style="margin-top:10px;padding-left:20px;">
-          <li>Дошкольное образование обучающихся с нарушением слуха</li>
-          <li>Начальное общее, основное общее и среднее общее образование обучающихся с нарушением слуха</li>
-          <li>Реализация АООП с применением электронного обучения и дистанционных образовательных технологий</li>
-          <li>Психолого-педагогическое и социальное сопровождение семей</li>
-          <li>Коррекционная работа с детьми с ОВЗ</li>
-        </ul>
+    <div class="hero-right">
+      <!-- SVG classroom illustration -->
+      <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="500" height="280" fill="#dae6f5"/>
+        <!-- floor -->
+        <rect y="220" width="500" height="60" fill="#c8d8ee"/>
+        <!-- wall -->
+        <rect width="500" height="220" fill="#e8f2ff"/>
+        <!-- window -->
+        <rect x="310" y="20" width="160" height="140" rx="4" fill="#b8d4f0" stroke="#9ab8d8" stroke-width="2"/>
+        <rect x="310" y="20" width="160" height="140" rx="4" fill="none" stroke="#9ab8d8" stroke-width="2"/>
+        <line x1="390" y1="20" x2="390" y2="160" stroke="#9ab8d8" stroke-width="1.5"/>
+        <line x1="310" y1="90" x2="470" y2="90" stroke="#9ab8d8" stroke-width="1.5"/>
+        <!-- plant 1 -->
+        <rect x="340" y="180" width="20" height="40" rx="3" fill="#b07040"/>
+        <ellipse cx="350" cy="175" rx="28" ry="22" fill="#4a9e6a"/>
+        <ellipse cx="330" cy="180" rx="18" ry="14" fill="#3d8a5a"/>
+        <ellipse cx="370" cy="178" rx="16" ry="12" fill="#5aae78"/>
+        <!-- plant 2 -->
+        <rect x="60" y="185" width="14" height="35" rx="3" fill="#b07040"/>
+        <ellipse cx="67" cy="180" rx="22" ry="18" fill="#4a9e6a"/>
+        <ellipse cx="52" cy="184" rx="14" ry="11" fill="#3d8a5a"/>
+        <ellipse cx="80" cy="182" rx="13" ry="10" fill="#5aae78"/>
+        <!-- board -->
+        <rect x="20" y="30" width="180" height="110" rx="6" fill="#f5f8ff" stroke="#b0c4de" stroke-width="2"/>
+        <line x1="35" y1="60" x2="180" y2="60" stroke="#c8d8ee" stroke-width="2"/>
+        <line x1="35" y1="80" x2="160" y2="80" stroke="#c8d8ee" stroke-width="2"/>
+        <line x1="35" y1="100" x2="170" y2="100" stroke="#c8d8ee" stroke-width="2"/>
+        <!-- teacher -->
+        <circle cx="140" cy="175" r="14" fill="#f5c5a0"/>
+        <rect x="124" y="189" width="32" height="45" rx="6" fill="#8b1a1a"/>
+        <line x1="124" y1="210" x2="106" y2="230" stroke="#8b1a1a" stroke-width="5" stroke-linecap="round"/>
+        <line x1="156" y1="210" x2="174" y2="232" stroke="#8b1a1a" stroke-width="5" stroke-linecap="round"/>
+        <line x1="132" y1="234" x2="128" y2="265" stroke="#5a3020" stroke-width="5" stroke-linecap="round"/>
+        <line x1="148" y1="234" x2="152" y2="265" stroke="#5a3020" stroke-width="5" stroke-linecap="round"/>
+        <!-- hair -->
+        <ellipse cx="140" cy="168" rx="15" ry="10" fill="#5a3020"/>
+        <!-- desk row -->
+        <!-- desk 1 -->
+        <rect x="220" y="200" width="60" height="8" rx="2" fill="#d4a870"/>
+        <line x1="230" y1="208" x2="230" y2="240" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <line x1="270" y1="208" x2="270" y2="240" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <!-- student 1 -->
+        <circle cx="250" cy="182" r="12" fill="#f5d0b0"/>
+        <rect x="238" y="194" width="24" height="30" rx="5" fill="#5a7aba"/>
+        <ellipse cx="250" cy="175" rx="13" ry="8" fill="#3a2010"/>
+        <!-- desk 2 -->
+        <rect x="300" y="210" width="60" height="8" rx="2" fill="#d4a870"/>
+        <line x1="310" y1="218" x2="310" y2="250" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <line x1="350" y1="218" x2="350" y2="250" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <!-- student 2 -->
+        <circle cx="330" cy="192" r="12" fill="#f5c5a0"/>
+        <rect x="318" y="204" width="24" height="30" rx="5" fill="#c03060"/>
+        <ellipse cx="330" cy="184" rx="13" ry="9" fill="#5a3020"/>
+        <!-- student 2 hand raised -->
+        <line x1="342" y1="208" x2="355" y2="185" stroke="#c03060" stroke-width="4" stroke-linecap="round"/>
+        <!-- desk 3 -->
+        <rect x="380" y="200" width="60" height="8" rx="2" fill="#d4a870"/>
+        <line x1="390" y1="208" x2="390" y2="240" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <line x1="430" y1="208" x2="430" y2="240" stroke="#b8904a" stroke-width="4" stroke-linecap="round"/>
+        <!-- student 3 -->
+        <circle cx="410" cy="182" r="12" fill="#f5d5b5"/>
+        <rect x="398" y="194" width="24" height="30" rx="5" fill="#50a060"/>
+        <ellipse cx="410" cy="175" rx="13" ry="8" fill="#c8a050"/>
+      </svg>
+      <div class="gosuslugi-label">
+        <span>госуслуги</span><br>Решаем вместе
       </div>
-      <p>Наш ориентир — успех и благополучие каждого обучающегося. Мы делаем всё для достижения высокого уровня качества образования всех детей — независимо от способностей и особенностей физических возможностей ребёнка.</p>
     </div>
   </div>
 
-  <!-- TEACHERS -->
-  <div class="page" id="page-teachers">
-    <h2 class="section-title">Педагогический состав</h2>
-    <p class="section-sub">Наши специалисты — дефектологи, психологи, педагоги с многолетним опытом работы с детьми с нарушением слуха</p>
-    <div class="teacher-grid" id="teacherGrid"></div>
+  <!-- QUICK NAV CARDS -->
+  <div class="qcards">
+    <div class="qcard" onclick="showPage('about',null)"><div class="qi">🏛️</div><h3>О центре</h3></div>
+    <div class="qcard" onclick="showPage('teachers',null)"><div class="qi">👩‍🏫</div><h3>Педагоги</h3></div>
+    <div class="qcard" onclick="showPage('schedule',null)"><div class="qi">📅</div><h3>Расписание</h3></div>
+    <div class="qcard" onclick="showPage('news',null)"><div class="qi">📰</div><h3>Новости</h3></div>
+    <div class="qcard" onclick="showPage('documents',null)"><div class="qi">📄</div><h3>Документы</h3></div>
+    <div class="qcard" onclick="showPage('contacts',null)"><div class="qi">📞</div><h3>Контакты</h3></div>
   </div>
 
-  <!-- CLASSES -->
-  <div class="page" id="page-classes">
-    <h2 class="section-title">Наши классы</h2>
-    <p class="section-sub">Адаптированные образовательные программы для каждого ребёнка</p>
-    <table class="data-table" id="classesTable">
-      <thead><tr><th>Класс</th><th>Тип</th><th>Учеников</th><th>Классный руководитель</th><th>Год основания</th></tr></thead>
-      <tbody id="classesBody"></tbody>
-    </table>
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">Лет работы</div></div>
+    <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Педагогов-специалистов</div></div>
+    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Классов обучения</div></div>
+    <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Обучающихся</div></div>
   </div>
 
-  <!-- SCHEDULE -->
-  <div class="page" id="page-schedule">
-    <h2 class="section-title">Расписание занятий</h2>
-    <p class="section-sub">Неделя 2–6 июня 2025 г.</p>
-    <div id="scheduleContainer"></div>
+  <!-- BANNERS ROW -->
+  <div class="banners-row">
+    <div class="banner banner-unity" onclick="">
+      <div>
+        <div class="by">2026</div>
+        <div class="bt">ГОД ЕДИНСТВА<br>НАРОДОВ РОССИИ</div>
+        <div class="bs">Единство народов России</div>
+      </div>
+      <div class="flag-stripe"></div>
+    </div>
+    <div class="banner banner-ministry" onclick="window.open('https://edu.gov.ru','_blank')" style="display:flex;gap:14px;padding:16px 20px">
+      <div class="bm-logo">🏛️</div>
+      <div class="bm-text">
+        <h4>Министерство просвещения<br>Российской Федерации</h4>
+        <div class="bm-tag">НОВОСТИ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SURVEY BANNERS -->
+  <div class="survey-row">
+    <div class="survey-card" onclick="window.open('https://bus.gov.ru/qrcode/rate/420835','_blank')">
+      <div class="survey-icon">📋</div>
+      <div class="survey-body">
+        <div class="survey-title">ОПРОС <span class="sarrow">→</span></div>
+        <div class="survey-sub">Независимая оценка качества<br>условий оказания услуг</div>
+      </div>
+    </div>
+    <div class="survey-card" onclick="window.open('https://bus.gov.ru/qrcode/rate/420835','_blank')">
+      <div class="survey-icon">📊</div>
+      <div class="survey-body">
+        <div class="survey-title">РЕЗУЛЬТАТЫ <span class="sarrow">→</span></div>
+        <div class="survey-sub">Независимая оценка качества<br>условий оказания услуг</div>
+      </div>
+    </div>
   </div>
 
   <!-- NEWS -->
-  <div class="page" id="page-news">
-    <h2 class="section-title">Новости</h2>
-    <div class="news-list" id="newsList"></div>
+  <h2 class="section-title">Последние новости</h2>
+  <div class="home-news-grid" id="homeNewsList"></div>
+  <div style="text-align:center;margin-top:4px">
+    <button class="btn btn-p" onclick="showPage('news',null)">Все новости →</button>
   </div>
+</div>
 
-  <!-- DOCUMENTS -->
-  <div class="page" id="page-documents">
-    <h2 class="section-title">Документы</h2>
-    <p class="section-sub">Нормативные документы, образовательные программы, локальные акты</p>
-    <table class="data-table">
-      <thead><tr><th>Название</th><th>Категория</th><th>Дата</th></tr></thead>
-      <tbody id="docsBody"></tbody>
-    </table>
+<!-- ══════════ ABOUT ══════════ -->
+<div class="page" id="page-about">
+  <h2 class="section-title">О центре</h2>
+  <div class="about-box">
+    <p>ОГБОУ «Центр образования для детей с особыми образовательными потребностями г. Смоленска» работает с <strong>1990 года</strong>. За эти годы центр стал ведущим учреждением региона по обучению и воспитанию детей с нарушением слуха.</p>
+    <p>Директор: <strong>Коткина Наталья Александровна</strong><br>
+    Телефон: <a href="tel:+74812358552">8 (4812) 35-85-52</a><br>
+    E-mail: <a href="mailto:spezshkola1-2@yandex.ru">spezshkola1-2@yandex.ru</a></p>
+    <p>Наш центр — пространство возможностей, где ребёнок получает качественные знания, твёрдые социальные навыки, погружается в атмосферу творчества. Педагогический коллектив сохраняет лучшие традиции прошлого и постоянно развивается, применяя лучшие практики и стремясь к инновациям.</p>
+    <div class="about-directions">
+      <strong>Направления деятельности:</strong>
+      <ul style="margin-top:10px;padding-left:20px">
+        <li>Дошкольное образование обучающихся с нарушением слуха</li>
+        <li>Начальное общее, основное общее и среднее общее образование обучающихся с нарушением слуха</li>
+        <li>Реализация АООП с применением электронного обучения и дистанционных образовательных технологий</li>
+        <li>Психолого-педагогическое и социальное сопровождение семей</li>
+        <li>Коррекционная работа с детьми с ОВЗ</li>
+      </ul>
+    </div>
+    <p>Наш ориентир — успех и благополучие каждого обучающегося. Мы делаем всё для достижения высокого уровня качества образования всех детей — независимо от способностей и особенностей физических возможностей ребёнка.</p>
   </div>
+</div>
 
-  <!-- HOTLINES -->
-  <div class="page" id="page-hotlines">
-    <h2 class="section-title">Горячие линии</h2>
-    <p class="section-sub">Телефоны для обращений по вопросам образования и защиты прав</p>
-    <div class="hotlines" id="hotlinesList"></div>
-  </div>
+<!-- ══════════ TEACHERS ══════════ -->
+<div class="page" id="page-teachers">
+  <h2 class="section-title">Педагогический состав</h2>
+  <p class="section-sub">Наши специалисты — дефектологи, психологи, педагоги с многолетним опытом работы с детьми с нарушением слуха</p>
 
-  <!-- CONTACTS -->
-  <div class="page" id="page-contacts">
-    <h2 class="section-title">Контакты</h2>
-    <div class="contacts-grid">
-      <div class="contact-block">
-        <h4>📍 Адрес</h4>
-        <p>РФ, Смоленская область,<br>г. Смоленск</p>
-      </div>
-      <div class="contact-block">
-        <h4>📞 Телефон / Факс</h4>
-        <p><a href="tel:+74812528759">8 (4812) 52-87-59</a></p>
-        <p><a href="tel:+74812358552">8 (4812) 35-85-52</a></p>
-      </div>
-      <div class="contact-block">
-        <h4>✉️ Электронная почта</h4>
-        <p><a href="mailto:spezshkola1-2@yandex.ru">spezshkola1-2@yandex.ru</a></p>
-      </div>
-      <div class="contact-block">
-        <h4>🌐 Социальные сети</h4>
-        <p><a href="https://vk.com/eschool67" target="_blank">ВКонтакте</a></p>
-        <p><a href="https://max.ru/id6731032577_gos" target="_blank">МАХ</a></p>
-      </div>
+  <!-- Director highlight -->
+  <div class="director-block">
+    <div class="dir-avatar"><img src="323.png" alt="Фото: Коткина Наталья Александровна"></div>
+    <div class="dir-info">
+      <h3>Коткина Наталья Александровна</h3>
+      <div class="dir-role">Директор центра</div>
+      <p>Директор ОГБОУ с 2010 года. Отличник народного просвещения. Автор многочисленных методических разработок для детей с нарушением слуха. Под её руководством центр стал победителем регионального конкурса «Лучшая инклюзивная школа» (2021, 2023).</p>
+      <p>Дорогие друзья! Наш Центр — пространство возможностей и благополучия, то место, где ребёнок получает качественные знания, твёрдые социальные навыки, погружается в атмосферу творчества. Добро пожаловать в наш Центр образования!</p>
+      <div class="dir-contact">📞 8 (4812) 35-85-52 &nbsp;·&nbsp; ✉️ spezshkola1-2@yandex.ru</div>
     </div>
   </div>
 
-  <!-- ADMIN PANEL -->
-  <div class="page" id="page-admin">
-    <h2 class="section-title">⚙ Панель администратора</h2>
-    <p class="section-sub">Управление контентом сайта</p>
+  <!-- Filter buttons -->
+  <div class="teacher-filters" id="teacherFilters"></div>
 
-    <!-- Add news -->
-    <div class="admin-section">
-      <h3>📰 Добавить новость</h3>
-      <div class="admin-form">
-        <label>Заголовок</label>
-        <input type="text" id="newTitle" placeholder="Введите заголовок новости">
-        <label>Содержание</label>
-        <textarea id="newContent" placeholder="Текст новости..."></textarea>
-        <label>Дата</label>
-        <input type="date" id="newDate">
-        <button class="btn btn-primary mt-12" onclick="addNews()">Опубликовать новость</button>
-      </div>
+  <!-- Teacher grid -->
+  <div class="teacher-grid" id="teacherGrid"></div>
+</div>
+
+<!-- ══════════ CLASSES ══════════ -->
+<div class="page" id="page-classes">
+  <h2 class="section-title">Наши классы</h2>
+  <p class="section-sub">Адаптированные образовательные программы для каждого ребёнка</p>
+  <table class="data-table">
+    <thead><tr><th>Класс</th><th>Тип обучения</th><th>Учеников</th><th>Классный руководитель</th><th>Год основания</th></tr></thead>
+    <tbody id="classesBody"></tbody>
+  </table>
+</div>
+
+<!-- ══════════ SCHEDULE ══════════ -->
+<div class="page" id="page-schedule">
+  <h2 class="section-title">Расписание занятий</h2>
+  <p class="section-sub">Неделя 2–6 июня 2025 г.</p>
+  <div id="scheduleContainer"></div>
+</div>
+
+<!-- ══════════ NEWS ══════════ -->
+<div class="page" id="page-news">
+  <h2 class="section-title">Новости</h2>
+  <div class="news-list" id="newsList"></div>
+</div>
+
+<!-- ══════════ DOCUMENTS ══════════ -->
+<div class="page" id="page-documents">
+  <h2 class="section-title">Документы</h2>
+  <p class="section-sub">Нормативные документы, образовательные программы, локальные акты</p>
+  <table class="data-table">
+    <thead><tr><th>Название</th><th>Категория</th><th>Дата</th></tr></thead>
+    <tbody id="docsBody"></tbody>
+  </table>
+</div>
+
+<!-- ══════════ HOTLINES ══════════ -->
+<div class="page" id="page-hotlines">
+  <h2 class="section-title">Горячие линии</h2>
+  <p class="section-sub">Телефоны для обращений по вопросам образования и защиты прав</p>
+  <div class="hotlines" id="hotlinesList"></div>
+</div>
+
+<!-- ══════════ CONTACTS ══════════ -->
+<div class="page" id="page-contacts">
+  <h2 class="section-title">Контакты</h2>
+  <div class="contacts-grid">
+    <div class="contact-block">
+      <h4>📍 Адрес</h4>
+      <p>РФ, Смоленская область, г. Смоленск</p>
     </div>
-
-    <!-- Manage users -->
-    <div class="admin-section">
-      <h3>👤 Пользователи системы</h3>
-      <table class="data-table">
-        <thead><tr><th>Логин</th><th>ФИО</th><th>Роль</th><th>Статус</th><th>Действие</th></tr></thead>
-        <tbody id="usersBody"></tbody>
-      </table>
-      <h4 style="margin:18px 0 10px;color:var(--blue)">Добавить пользователя</h4>
-      <div class="admin-form">
-        <div class="gap-row">
-          <div style="flex:1"><label>Логин</label><input type="text" id="newUserLogin" placeholder="login"></div>
-          <div style="flex:1"><label>Пароль</label><input type="password" id="newUserPass" placeholder="пароль"></div>
-        </div>
-        <div class="gap-row">
-          <div style="flex:2"><label>ФИО</label><input type="text" id="newUserName" placeholder="Фамилия Имя Отчество"></div>
-          <div style="flex:1"><label>Роль</label>
-            <select id="newUserRole"><option value="user">Пользователь</option><option value="teacher">Учитель</option><option value="admin">Администратор</option></select>
-          </div>
-        </div>
-        <button class="btn btn-primary mt-12" onclick="addUser()">Создать пользователя</button>
-      </div>
+    <div class="contact-block">
+      <h4>📞 Телефон / Факс</h4>
+      <p><a href="tel:+74812528759">8 (4812) 52-87-59</a></p>
+      <p><a href="tel:+74812358552">8 (4812) 35-85-52</a></p>
     </div>
-
-    <!-- DB overview -->
-    <div class="admin-section">
-      <h3>📊 Статистика базы данных</h3>
-      <table class="data-table">
-        <thead><tr><th>Таблица</th><th>Записей</th></tr></thead>
-        <tbody id="statsBody"></tbody>
-      </table>
+    <div class="contact-block">
+      <h4>✉️ Электронная почта</h4>
+      <p><a href="mailto:spezshkola1-2@yandex.ru">spezshkola1-2@yandex.ru</a></p>
+    </div>
+    <div class="contact-block">
+      <h4>🌐 Социальные сети</h4>
+      <p><a href="https://vk.com/eschool67" target="_blank">ВКонтакте</a></p>
+      <p><a href="https://max.ru/id6731032577_gos" target="_blank">МАХ</a></p>
     </div>
   </div>
+</div>
+
+<!-- ══════════ ADMIN ══════════ -->
+<div class="page" id="page-admin">
+  <h2 class="section-title">⚙ Панель администратора</h2>
+  <p class="section-sub">Управление контентом сайта</p>
+  <div class="adm-section">
+    <h3>📰 Добавить новость</h3>
+    <div class="af">
+      <label>Заголовок</label><input type="text" id="newTitle" placeholder="Введите заголовок">
+      <label>Содержание</label><textarea id="newContent" placeholder="Текст новости..."></textarea>
+      <label>Дата</label><input type="date" id="newDate">
+      <button class="btn btn-p mt12" onclick="addNews()">Опубликовать</button>
+    </div>
+  </div>
+  <div class="adm-section">
+    <h3>👤 Пользователи системы</h3>
+    <table class="data-table"><thead><tr><th>Логин</th><th>ФИО</th><th>Роль</th><th>Статус</th><th>Действие</th></tr></thead>
+    <tbody id="usersBody"></tbody></table>
+    <h4 style="margin:16px 0 10px;color:var(--blue)">Добавить пользователя</h4>
+    <div class="af">
+      <div class="grow">
+        <div><label>Логин</label><input type="text" id="nUL" placeholder="login"></div>
+        <div><label>Пароль</label><input type="password" id="nUP" placeholder="пароль"></div>
+      </div>
+      <div class="grow">
+        <div style="flex:2"><label>ФИО</label><input type="text" id="nUN" placeholder="Фамилия Имя Отчество"></div>
+        <div><label>Роль</label><select id="nUR"><option value="user">Пользователь</option><option value="teacher">Учитель</option><option value="admin">Администратор</option></select></div>
+      </div>
+      <button class="btn btn-p mt12" onclick="addUser()">Создать</button>
+    </div>
+  </div>
+  <div class="adm-section">
+    <h3>📊 Статистика</h3>
+    <table class="data-table"><thead><tr><th>Таблица</th><th>Записей</th></tr></thead>
+    <tbody id="statsBody"></tbody></table>
+  </div>
+</div>
 
 </main>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -433,228 +591,228 @@
       <a href="https://max.ru/id6731032577_gos" target="_blank">МАХ</a>
     </div>
   </div>
-  <div class="footer-bottom">© 2025 ОГБОУ Центр образования г. Смоленска. Все права защищены.</div>
+  <div class="foot-bottom">© 2025 ОГБОУ Центр образования г. Смоленска. Все права защищены.</div>
 </footer>
 
 <!-- AUTH MODAL -->
 <div class="modal-overlay hidden" id="authModal">
   <div class="modal">
-    <button class="close-btn" onclick="closeAuth()">×</button>
+    <button class="close-x" onclick="closeAuth()">×</button>
     <h2>Вход в систему</h2>
-    <p class="modal-sub">Введите логин и пароль для доступа</p>
-    <div class="modal-tabs">
-      <button class="tab-btn active" id="loginTabBtn" onclick="switchTab('login')">Войти</button>
-      <button class="tab-btn" id="regTabBtn" onclick="switchTab('register')">Регистрация</button>
+    <p class="msub">Введите логин и пароль для доступа к личному кабинету</p>
+    <div class="mtabs">
+      <button class="mtab active" id="loginTabBtn" onclick="switchTab('login')">Войти</button>
+      <button class="mtab" id="regTabBtn" onclick="switchTab('register')">Регистрация</button>
     </div>
-
-    <!-- LOGIN FORM -->
     <div id="loginForm">
-      <div id="loginError" class="error-msg" style="display:none"></div>
-      <label>Логин</label>
-      <input type="text" id="loginInput" placeholder="Введите логин">
-      <label>Пароль</label>
-      <input type="password" id="passInput" placeholder="Введите пароль">
-      <button class="btn-primary" onclick="doLogin()">Войти</button>
-      <p style="font-size:12px;color:var(--text-muted);margin-top:12px">
-        Демо: <strong>admin / Admin@123</strong> (администратор)<br>
-        Демо: <strong>teacher1 / Teacher@123</strong> (учитель)<br>
-        Демо: <strong>user1 / User@123</strong> (пользователь)
+      <div id="loginError" class="merr" style="display:none"></div>
+      <label>Логин</label><input type="text" id="loginInput" placeholder="Введите логин">
+      <label>Пароль</label><input type="password" id="passInput" placeholder="Введите пароль">
+      <button class="mbtn" onclick="doLogin()">Войти</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">
+        Демо: <strong>admin / Admin@123</strong> — администратор<br>
+        Демо: <strong>teacher1 / Teacher@123</strong> — учитель<br>
+        Демо: <strong>user1 / User@123</strong> — пользователь
       </p>
     </div>
-
-    <!-- REGISTER FORM -->
     <div id="registerForm" style="display:none">
-      <div id="regError" class="error-msg" style="display:none"></div>
-      <div id="regSuccess" class="success-msg" style="display:none"></div>
-      <label>ФИО</label>
-      <input type="text" id="regName" placeholder="Фамилия Имя Отчество">
-      <label>Логин</label>
-      <input type="text" id="regLogin" placeholder="Придумайте логин">
-      <label>Email (необязательно)</label>
-      <input type="email" id="regEmail" placeholder="example@mail.ru">
-      <label>Пароль</label>
-      <input type="password" id="regPass" placeholder="Минимум 6 символов">
-      <label>Повтор пароля</label>
-      <input type="password" id="regPass2" placeholder="Повторите пароль">
-      <button class="btn-primary" onclick="doRegister()">Зарегистрироваться</button>
+      <div id="regError" class="merr" style="display:none"></div>
+      <div id="regSuccess" class="msuc" style="display:none"></div>
+      <label>ФИО</label><input type="text" id="regName" placeholder="Фамилия Имя Отчество">
+      <label>Логин</label><input type="text" id="regLogin" placeholder="Придумайте логин">
+      <label>Email (необязательно)</label><input type="email" id="regEmail" placeholder="example@mail.ru">
+      <label>Пароль</label><input type="password" id="regPass" placeholder="Минимум 6 символов">
+      <label>Повтор пароля</label><input type="password" id="regPass2" placeholder="Повторите пароль">
+      <button class="mbtn" onclick="doRegister()">Зарегистрироваться</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDBACK MODAL -->
+<div class="modal-overlay hidden" id="feedModal">
+  <div class="feed-modal">
+    <button class="close-x" onclick="closeFeedback()" style="float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted)">×</button>
+    <h2>Написать о проблеме</h2>
+    <p>Есть предложения по организации учебного процесса или знаете, как сделать школу лучше? Напишите нам.</p>
+    <input type="text" id="fbName" placeholder="Ваше имя">
+    <input type="email" id="fbEmail" placeholder="Email для обратной связи">
+    <textarea id="fbText" placeholder="Опишите проблему или предложение..."></textarea>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-p" style="flex:1" onclick="sendFeedback()">Отправить</button>
+      <button class="btn" style="flex:1;background:var(--border);color:var(--muted)" onclick="closeFeedback()">Отмена</button>
     </div>
   </div>
 </div>
 
 <script>
-// =============================================
-// DATA STORE (simulates DB)
-// =============================================
+document.getElementById('page-contacts').appendChild(document.getElementById('feedbackBlock'));
+// ══════════ DATA ══════════
 const DB = {
-  users: [
-    { id:1, login:'admin',    pass:'Admin@123',   role:'admin',   name:'Коткина Наталья Александровна', email:'spezshkola1-2@yandex.ru', active:true },
-    { id:2, login:'teacher1', pass:'Teacher@123', role:'teacher', name:'Петров Андрей Сергеевич',       email:'petrov@school.ru',          active:true },
-    { id:3, login:'user1',    pass:'User@123',    role:'user',    name:'Родитель Иванов И.И.',           email:'ivanov@mail.ru',             active:true },
+  users:[
+    {id:1,login:'admin',    pass:'Admin@123',   role:'admin',   name:'Коткина Наталья Александровна',email:'spezshkola1-2@yandex.ru',active:true},
+    {id:2,login:'teacher1', pass:'Teacher@123', role:'teacher', name:'Петров Андрей Сергеевич',      email:'petrov@school.ru',         active:true},
+    {id:3,login:'user1',    pass:'User@123',    role:'user',    name:'Родитель Иванов И.И.',          email:'ivanov@mail.ru',           active:true},
   ],
-  news: [
-    { id:1, title:'День открытых дверей — 2025', date:'2025-04-01', content:'Уважаемые родители! Приглашаем вас на ежегодный День открытых дверей, который состоится 15 апреля 2025 года. Вы сможете познакомиться с нашим коллективом, посетить занятия и задать вопросы специалистам.', author:'Коткина Н.А.' },
-    { id:2, title:'Победа на региональной олимпиаде', date:'2025-03-20', content:'Поздравляем наших учеников, занявших призовые места на региональной олимпиаде по жестовому языку! Особая благодарность педагогам-наставникам.', author:'Иванова С.П.' },
-    { id:3, title:'Новое оборудование для кабинета сурдологии', date:'2025-02-10', content:'В наш центр поступило современное слуховое оборудование. Теперь каждый ребёнок сможет пройти диагностику и коррекционные занятия с применением новейших технологий.', author:'Коткина Н.А.' },
-    { id:4, title:'Итоги спортивного праздника', date:'2025-01-28', content:'Состоялся традиционный спортивный праздник «Мы — команда!». Все участники получили дипломы и памятные подарки. Спасибо всем, кто пришёл поддержать наших спортсменов!', author:'Смирнов О.В.' },
-    { id:5, title:'Каникулы: сроки и мероприятия', date:'2025-03-15', content:'Сообщаем о сроках весенних каникул: с 24 марта по 30 марта 2025 года. В период каникул будут организованы творческие мастер-классы и экскурсии.', author:'Иванова С.П.' },
+  news:[
+    {id:1,title:'День открытых дверей — 2025',date:'2025-04-01',content:'Уважаемые родители! Приглашаем вас на ежегодный День открытых дверей, который состоится 15 апреля 2025 года. Вы сможете познакомиться с нашим коллективом, посетить занятия и задать вопросы специалистам.',author:'Коткина Н.А.'},
+    {id:2,title:'Победа на региональной олимпиаде',date:'2025-03-20',content:'Поздравляем наших учеников, занявших призовые места на региональной олимпиаде по жестовому языку! Особая благодарность педагогам-наставникам.',author:'Иванова С.П.'},
+    {id:3,title:'Новое оборудование для кабинета сурдологии',date:'2025-02-10',content:'В наш центр поступило современное слуховое оборудование. Теперь каждый ребёнок сможет пройти диагностику и коррекционные занятия с применением новейших технологий.',author:'Коткина Н.А.'},
+    {id:4,title:'Итоги спортивного праздника',date:'2025-01-28',content:'Состоялся традиционный спортивный праздник «Мы — команда!». Все участники получили дипломы и памятные подарки. Спасибо всем, кто пришёл поддержать наших спортсменов!',author:'Смирнов О.В.'},
+    {id:5,title:'Каникулы: сроки и мероприятия',date:'2025-03-15',content:'Сообщаем о сроках весенних каникул: с 24 марта по 30 марта 2025 года. В период каникул будут организованы творческие мастер-классы и экскурсии.',author:'Иванова С.П.'},
   ],
-  teachers: [
-    { id:1, name:'Коткина Наталья Александровна',    job:'Директор',                          phone:'+7(4812)35-85-52', icon:'👩‍💼' },
-    { id:2, name:'Иванова Светлана Петровна',        job:'Заместитель директора',              phone:'+7(4812)35-85-53', icon:'👩‍💼' },
-    { id:3, name:'Петров Андрей Сергеевич',          job:'Учитель математики и физики',        phone:'+7(4812)35-85-54', icon:'👨‍🏫' },
-    { id:4, name:'Сидорова Марина Ивановна',         job:'Учитель русского языка и литературы',phone:'+7(4812)35-85-55', icon:'👩‍🏫' },
-    { id:5, name:'Кузнецова Елена Дмитриевна',       job:'Педагог-психолог',                   phone:'+7(4812)35-85-56', icon:'👩‍⚕️' },
-    { id:6, name:'Смирнов Олег Викторович',          job:'Учитель истории и обществознания',   phone:'+7(4812)35-85-57', icon:'👨‍🏫' },
-    { id:7, name:'Новикова Татьяна Александровна',   job:'Учитель-дефектолог',                 phone:'+7(4812)35-85-58', icon:'👩‍🏫' },
-    { id:8, name:'Морозов Иван Николаевич',          job:'Учитель физкультуры',                phone:'+7(4812)35-85-59', icon:'👨‍🏫' },
-    { id:9, name:'Волкова Анастасия Игоревна',       job:'Педагог доп. образования',           phone:'+7(4812)35-85-60', icon:'👩‍🎨' },
-    { id:10,name:'Лебедева Ольга Петровна',          job:'Социальный педагог',                 phone:'+7(4812)35-85-61', icon:'👩‍⚕️' },
+  teachers:[
+    {id:2, name:'Иванова Светлана Петровна',       job:'Заместитель директора',              cat:'Администрация',  phone:'+7(4812)35-85-53', icon:'👩‍💼', exp:20, subjects:['Организация учебного процесса'],    bio:'Заместитель директора по учебной работе. Стаж педагогической деятельности — 20 лет. Отвечает за координацию учебных программ и работу с ФГОС.'},
+    {id:3, name:'Петров Андрей Сергеевич',         job:'Учитель математики и физики',        cat:'Учителя',        phone:'+7(4812)35-85-54', icon:'👨‍🏫', exp:12, subjects:['Математика','Физика'],              bio:'Победитель регионального конкурса «Учитель года — 2022». Активно применяет современные методики обучения детей с нарушением слуха. Разработал авторский курс по математике с визуальной поддержкой.'},
+    {id:4, name:'Сидорова Марина Ивановна',        job:'Учитель рус. языка и литературы',    cat:'Учителя',        phone:'+7(4812)35-85-55', icon:'👩‍🏫', exp:15, subjects:['Русский язык','Литература','Развитие речи'], bio:'Применяет жестовый язык на уроках, создала авторские пособия для детей с нарушением слуха. Участница международной конференции по инклюзивному образованию (2023).'},
+    {id:5, name:'Кузнецова Елена Дмитриевна',      job:'Педагог-психолог',                   cat:'Психологи',      phone:'+7(4812)35-85-56', icon:'👩‍⚕️', exp:10, subjects:['Психологическое сопровождение'],    bio:'Специалист по работе с детьми с нарушением слуха и их семьями. Проводит индивидуальные и групповые сессии, ведёт работу по профилактике тревожности и социальной адаптации.'},
+    {id:6, name:'Смирнов Олег Викторович',         job:'Учитель истории и обществознания',   cat:'Учителя',        phone:'+7(4812)35-85-57', icon:'👨‍🏫', exp:17, subjects:['История','Обществознание'],          bio:'Руководитель школьного спортивного клуба. Совмещает преподавание истории с активной внеурочной деятельностью. Организатор исторических викторин и квестов.'},
+    {id:7, name:'Новикова Татьяна Александровна',  job:'Учитель-дефектолог',                 cat:'Дефектологи',    phone:'+7(4812)35-85-58', icon:'👩‍🏫', exp:15, subjects:['Коррекционные занятия','Жестовый язык'], bio:'Специалист по сурдопедагогике. Ведёт коррекционные занятия по развитию слухового восприятия и речи. Сертифицированный переводчик русского жестового языка.'},
+    {id:8, name:'Морозов Иван Николаевич',         job:'Учитель физкультуры',                cat:'Учителя',        phone:'+7(4812)35-85-59', icon:'👨‍🏫', exp:8,  subjects:['Физическая культура','Плавание'],    bio:'Мастер спорта по плаванию. Руководит секцией спортивного ориентирования. Чемпион региональных соревнований по адаптивному спорту среди педагогов.'},
+    {id:9, name:'Волкова Анастасия Игоревна',      job:'Педагог доп. образования',           cat:'Дополнительное', phone:'+7(4812)35-85-60', icon:'👩‍🎨', exp:6,  subjects:['ИЗО','Творческая мастерская'],      bio:'Руководит кружком декоративно-прикладного творчества. Работы учеников выставлялись на областной выставке детского творчества «Краски мира» в 2024 году.'},
+    {id:10,name:'Лебедева Ольга Петровна',         job:'Социальный педагог',                 cat:'Психологи',      phone:'+7(4812)35-85-61', icon:'👩‍⚕️', exp:13, subjects:['Социальное сопровождение'],          bio:'Координирует работу с семьями обучающихся. Помогает в оформлении льгот, сопровождает детей при поступлении. Ведёт профориентационную работу для выпускников.'},
   ],
-  classes: [
-    { id:1, name:'1 «А»', type:'Общеобразовательный',   students:12, teacher:'Сидорова М.И.',    year:2024 },
-    { id:2, name:'3 «Б»', type:'Коррекционный',          students:10, teacher:'Петров А.С.',       year:2022 },
-    { id:3, name:'5 «А»', type:'Коррекционный',          students: 8, teacher:'Смирнов О.В.',      year:2020 },
-    { id:4, name:'7 «А»', type:'Коррекционный',          students: 9, teacher:'Сидорова М.И.',    year:2018 },
-    { id:5, name:'9 «А»', type:'Профильный',             students:11, teacher:'Петров А.С.',       year:2016 },
+  classes:[
+    {id:1,name:'1 «А»',type:'Общеобразовательный',  students:12,teacher:'Сидорова М.И.',  year:2024},
+    {id:2,name:'3 «Б»',type:'Коррекционный',         students:10,teacher:'Петров А.С.',    year:2022},
+    {id:3,name:'5 «А»',type:'Коррекционный',         students:8, teacher:'Смирнов О.В.',   year:2020},
+    {id:4,name:'7 «А»',type:'Коррекционный',         students:9, teacher:'Сидорова М.И.',  year:2018},
+    {id:5,name:'9 «А»',type:'Профильный',            students:11,teacher:'Петров А.С.',    year:2016},
   ],
-  schedule: [
-    { day:'Понедельник', date:'02.06', classId:1, className:'1 «А»', subject:'Математика',          teacher:'Петров А.С.',   start:'09:00', end:'09:40', room:'201' },
-    { day:'Понедельник', date:'02.06', classId:1, className:'1 «А»', subject:'Русский язык',         teacher:'Сидорова М.И.',start:'09:50', end:'10:30', room:'201' },
-    { day:'Понедельник', date:'02.06', classId:1, className:'1 «А»', subject:'Жестовый язык',        teacher:'Новикова Т.А.',start:'10:40', end:'11:20', room:'105' },
-    { day:'Понедельник', date:'02.06', classId:2, className:'3 «Б»', subject:'Математика',          teacher:'Петров А.С.',   start:'09:00', end:'09:40', room:'202' },
-    { day:'Понедельник', date:'02.06', classId:2, className:'3 «Б»', subject:'История',             teacher:'Смирнов О.В.', start:'09:50', end:'10:30', room:'202' },
-    { day:'Вторник',     date:'03.06', classId:1, className:'1 «А»', subject:'Физическая культура', teacher:'Морозов И.Н.',  start:'09:00', end:'09:40', room:'Спортзал' },
-    { day:'Вторник',     date:'03.06', classId:1, className:'1 «А»', subject:'ИЗО',                 teacher:'Волкова А.И.', start:'09:50', end:'10:30', room:'Мастерская' },
-    { day:'Среда',       date:'04.06', classId:3, className:'5 «А»', subject:'Математика',          teacher:'Петров А.С.',   start:'09:00', end:'09:40', room:'203' },
-    { day:'Среда',       date:'04.06', classId:3, className:'5 «А»', subject:'Русский язык',         teacher:'Сидорова М.И.',start:'09:50', end:'10:30', room:'203' },
-    { day:'Четверг',     date:'05.06', classId:4, className:'7 «А»', subject:'История',             teacher:'Смирнов О.В.', start:'09:00', end:'09:40', room:'204' },
-    { day:'Четверг',     date:'05.06', classId:4, className:'7 «А»', subject:'Математика',          teacher:'Петров А.С.',   start:'09:50', end:'10:30', room:'204' },
-    { day:'Пятница',     date:'06.06', classId:5, className:'9 «А»', subject:'Математика',          teacher:'Петров А.С.',   start:'09:00', end:'09:40', room:'205' },
-    { day:'Пятница',     date:'06.06', classId:5, className:'9 «А»', subject:'История',             teacher:'Смирнов О.В.', start:'09:50', end:'10:30', room:'205' },
+  schedule:[
+    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'201'},
+    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'201'},
+    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Жестовый язык',       teacher:'Новикова Т.А.',start:'10:40',end:'11:20',room:'105'},
+    {day:'Понедельник',date:'02.06',classId:2,className:'3 «Б»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'202'},
+    {day:'Понедельник',date:'02.06',classId:2,className:'3 «Б»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'202'},
+    {day:'Вторник',    date:'03.06',classId:1,className:'1 «А»',subject:'Физическая культура', teacher:'Морозов И.Н.', start:'09:00',end:'09:40',room:'Спортзал'},
+    {day:'Вторник',    date:'03.06',classId:1,className:'1 «А»',subject:'ИЗО',                 teacher:'Волкова А.И.', start:'09:50',end:'10:30',room:'Мастерская'},
+    {day:'Среда',      date:'04.06',classId:3,className:'5 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'203'},
+    {day:'Среда',      date:'04.06',classId:3,className:'5 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'203'},
+    {day:'Четверг',    date:'05.06',classId:4,className:'7 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:00',end:'09:40',room:'204'},
+    {day:'Четверг',    date:'05.06',classId:4,className:'7 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:50',end:'10:30',room:'204'},
+    {day:'Пятница',    date:'06.06',classId:5,className:'9 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'205'},
+    {day:'Пятница',    date:'06.06',classId:5,className:'9 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'205'},
   ],
-  documents: [
-    { title:'Устав образовательной организации',           category:'Нормативные документы',     date:'01.09.2024' },
-    { title:'Лицензия на образовательную деятельность',    category:'Нормативные документы',     date:'01.09.2024' },
-    { title:'Адаптированная образовательная программа',    category:'Образовательные программы', date:'01.09.2024' },
-    { title:'Правила приёма обучающихся',                  category:'Локальные акты',            date:'01.09.2024' },
-    { title:'Положение о психолого-педагогической службе', category:'Локальные акты',            date:'01.09.2024' },
-    { title:'Отчёт о результатах самообследования 2024',   category:'Отчёты',                   date:'15.01.2025' },
+  documents:[
+    {title:'Устав образовательной организации',          category:'Нормативные документы',    date:'01.09.2024'},
+    {title:'Лицензия на образовательную деятельность',   category:'Нормативные документы',    date:'01.09.2024'},
+    {title:'Адаптированная образовательная программа',   category:'Образовательные программы',date:'01.09.2024'},
+    {title:'Правила приёма обучающихся',                 category:'Локальные акты',           date:'01.09.2024'},
+    {title:'Положение о психолого-педагогической службе',category:'Локальные акты',           date:'01.09.2024'},
+    {title:'Отчёт о результатах самообследования 2024',  category:'Отчёты',                   date:'15.01.2025'},
   ],
-  hotlines: [
-    { topic:'Организация работы общеобразовательных организаций', phone:'8 (4812) 29-27-55' },
-    { topic:'Организация работы детских садов',                   phone:'8 (4812) 29-27-24' },
-    { topic:'Бесплатное питание для учащихся 1–4 классов',        phone:'8 (4812) 29-27-41' },
-    { topic:'Выплаты за классное руководство',                    phone:'8 (4812) 38-27-11' },
-    { topic:'ЕГЭ',                                                phone:'8 (4812) 29-27-60' },
-    { topic:'ОГЭ',                                                phone:'8 (4812) 29-27-46' },
-    { topic:'Детский отдых в лагерях дневного пребывания',        phone:'8 (4812) 29-27-45' },
-    { topic:'Горячая линия Рособрнадзора по ЕГЭ',                 phone:'+7 (495) 984-89-19' },
-    { topic:'Телефон доверия (психиатрическая больница)',          phone:'8 (800) 707-95-91' },
+  hotlines:[
+    {topic:'Организация работы общеобразовательных организаций',phone:'8 (4812) 29-27-55'},
+    {topic:'Организация работы детских садов',                  phone:'8 (4812) 29-27-24'},
+    {topic:'Бесплатное питание для учащихся 1–4 классов',       phone:'8 (4812) 29-27-41'},
+    {topic:'Выплаты за классное руководство',                   phone:'8 (4812) 38-27-11'},
+    {topic:'ЕГЭ',                                               phone:'8 (4812) 29-27-60'},
+    {topic:'ОГЭ',                                               phone:'8 (4812) 29-27-46'},
+    {topic:'Детский отдых в лагерях дневного пребывания',       phone:'8 (4812) 29-27-45'},
+    {topic:'Горячая линия Рособрнадзора по ЕГЭ',                phone:'+7 (495) 984-89-19'},
+    {topic:'Телефон доверия (психиатрическая больница)',         phone:'8 (800) 707-95-91'},
   ]
 };
 
-// =============================================
-// AUTH STATE
-// =============================================
+// ══════════ AUTH ══════════
 let currentUser = null;
 
-function doLogin() {
-  const login = document.getElementById('loginInput').value.trim();
-  const pass  = document.getElementById('passInput').value;
-  const err   = document.getElementById('loginError');
-  const user  = DB.users.find(u => u.login === login && u.pass === pass && u.active);
-  if (!user) { err.textContent = 'Неверный логин или пароль.'; err.style.display='block'; return; }
-  err.style.display = 'none';
-  currentUser = user;
-  closeAuth();
-  updateAuthUI();
+function doLogin(){
+  const login=document.getElementById('loginInput').value.trim();
+  const pass=document.getElementById('passInput').value;
+  const err=document.getElementById('loginError');
+  const u=DB.users.find(u=>u.login===login&&u.pass===pass&&u.active);
+  if(!u){err.textContent='Неверный логин или пароль.';err.style.display='block';return;}
+  err.style.display='none';
+  currentUser=u; closeAuth(); updateAuthUI();
 }
 
-function doRegister() {
-  const name  = document.getElementById('regName').value.trim();
-  const login = document.getElementById('regLogin').value.trim();
-  const email = document.getElementById('regEmail').value.trim();
-  const pass  = document.getElementById('regPass').value;
-  const pass2 = document.getElementById('regPass2').value;
-  const err   = document.getElementById('regError');
-  const suc   = document.getElementById('regSuccess');
-  err.style.display = 'none'; suc.style.display = 'none';
-  if (!name || !login || !pass) { err.textContent = 'Заполните все обязательные поля.'; err.style.display='block'; return; }
-  if (pass.length < 6) { err.textContent = 'Пароль должен содержать минимум 6 символов.'; err.style.display='block'; return; }
-  if (pass !== pass2) { err.textContent = 'Пароли не совпадают.'; err.style.display='block'; return; }
-  if (DB.users.find(u => u.login === login)) { err.textContent = 'Пользователь с таким логином уже существует.'; err.style.display='block'; return; }
-  const newId = DB.users.length + 1;
-  DB.users.push({ id:newId, login, pass, role:'user', name, email, active:true });
-  suc.textContent = 'Регистрация успешна! Теперь вы можете войти.'; suc.style.display='block';
-  document.getElementById('regName').value = document.getElementById('regLogin').value = document.getElementById('regEmail').value = document.getElementById('regPass').value = document.getElementById('regPass2').value = '';
+function doRegister(){
+  const name=document.getElementById('regName').value.trim();
+  const login=document.getElementById('regLogin').value.trim();
+  const email=document.getElementById('regEmail').value.trim();
+  const pass=document.getElementById('regPass').value;
+  const pass2=document.getElementById('regPass2').value;
+  const err=document.getElementById('regError');
+  const suc=document.getElementById('regSuccess');
+  err.style.display='none'; suc.style.display='none';
+  if(!name||!login||!pass){err.textContent='Заполните все обязательные поля.';err.style.display='block';return;}
+  if(pass.length<6){err.textContent='Пароль минимум 6 символов.';err.style.display='block';return;}
+  if(pass!==pass2){err.textContent='Пароли не совпадают.';err.style.display='block';return;}
+  if(DB.users.find(u=>u.login===login)){err.textContent='Логин уже занят.';err.style.display='block';return;}
+  DB.users.push({id:Date.now(),login,pass,role:'user',name,email,active:true});
+  suc.textContent='Регистрация успешна! Войдите в систему.';suc.style.display='block';
+  ['regName','regLogin','regEmail','regPass','regPass2'].forEach(id=>document.getElementById(id).value='');
 }
 
-function logout() {
-  currentUser = null;
-  updateAuthUI();
-  showPage('home', null);
-}
+function logout(){currentUser=null;updateAuthUI();showPage('home',null);}
 
-function updateAuthUI() {
-  const bar  = document.getElementById('userBar');
-  const btn  = document.getElementById('openAuthBtn');
-  const admin= document.getElementById('adminNavItem');
-  if (currentUser) {
-    bar.style.display = 'flex';
-    document.getElementById('userBarName').textContent = currentUser.name;
-    const rb = document.getElementById('userBarRole');
-    const labels = { admin:'Администратор', teacher:'Учитель', user:'Пользователь' };
-    rb.textContent = labels[currentUser.role] || currentUser.role;
-    rb.className = 'role-badge' + (currentUser.role === 'admin' ? ' admin' : '');
-    btn.textContent = '👤 ' + currentUser.login;
-    admin.style.display = currentUser.role === 'admin' ? '' : 'none';
-    if (currentUser.role === 'admin') renderAdmin();
+function updateAuthUI(){
+  const bar=document.getElementById('userBar');
+  const btn=document.getElementById('openAuthBtn');
+  const adm=document.getElementById('adminNavItem');
+  if(currentUser){
+    bar.style.display='flex';
+    document.getElementById('uName').textContent=currentUser.name;
+    const rb=document.getElementById('uRole');
+    const lbl={admin:'Администратор',teacher:'Учитель',user:'Пользователь'};
+    rb.textContent=lbl[currentUser.role]||currentUser.role;
+    rb.className='role-badge '+currentUser.role;
+    btn.textContent='👤 '+currentUser.login;
+    adm.style.display=currentUser.role==='admin'?'':'none';
+    if(currentUser.role==='admin') renderAdmin();
   } else {
-    bar.style.display = 'none';
-    btn.textContent = '🔑 Войти';
-    admin.style.display = 'none';
+    bar.style.display='none';
+    btn.textContent='🔑 Войти';
+    adm.style.display='none';
   }
 }
 
-// =============================================
-// MODAL
-// =============================================
-function openAuth() {
-  if (currentUser) return; // already logged in
-  document.getElementById('authModal').classList.remove('hidden');
+// ══════════ MODALS ══════════
+function openAuth(){if(!currentUser) document.getElementById('authModal').classList.remove('hidden');}
+function closeAuth(){document.getElementById('authModal').classList.add('hidden');}
+function openFeedback(){document.getElementById('feedModal').classList.remove('hidden');}
+function closeFeedback(){document.getElementById('feedModal').classList.add('hidden');}
+function sendFeedback(){
+  const name=document.getElementById('fbName').value.trim();
+  const text=document.getElementById('fbText').value.trim();
+  if(!name||!text){alert('Заполните имя и текст сообщения');return;}
+  closeFeedback();
+  alert('Спасибо, '+name+'! Ваше сообщение отправлено. Мы ответим в ближайшее время.');
+  document.getElementById('fbName').value=document.getElementById('fbEmail').value=document.getElementById('fbText').value='';
 }
-function closeAuth() { document.getElementById('authModal').classList.add('hidden'); }
-function switchTab(t) {
-  document.getElementById('loginForm').style.display    = t==='login'    ? '' : 'none';
-  document.getElementById('registerForm').style.display = t==='register' ? '' : 'none';
-  document.getElementById('loginTabBtn').className = 'tab-btn' + (t==='login' ? ' active' : '');
-  document.getElementById('regTabBtn').className   = 'tab-btn' + (t==='register' ? ' active' : '');
+function switchTab(t){
+  document.getElementById('loginForm').style.display=t==='login'?'':'none';
+  document.getElementById('registerForm').style.display=t==='register'?'':'none';
+  document.getElementById('loginTabBtn').className='mtab'+(t==='login'?' active':'');
+  document.getElementById('regTabBtn').className='mtab'+(t==='register'?' active':'');
 }
-document.getElementById('authModal').addEventListener('click', function(e){ if(e.target===this) closeAuth(); });
+document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeAuth();});
+document.getElementById('feedModal').addEventListener('click',function(e){if(e.target===this)closeFeedback();});
 
-// =============================================
-// PAGE ROUTING
-// =============================================
-function showPage(id, linkEl) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  if (linkEl) linkEl.classList.add('active');
+// ══════════ ROUTING ══════════
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if(el) el.classList.add('active');
   window.scrollTo(0,0);
 }
 
-// =============================================
-// RENDER FUNCTIONS
-// =============================================
-function fmt(dateStr) {
-  const [y,m,d] = dateStr.split('-');
-  const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-  return `${parseInt(d)} ${months[parseInt(m)-1]} ${y}`;
+// ══════════ RENDER ══════════
+function fmt(d){const[y,m,day]=d.split('-');const mn=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];return`${+day} ${mn[+m-1]} ${y}`;}
+
+function renderHomeNews(){
+  document.getElementById('homeNewsList').innerHTML=DB.news.slice(0,4).map((n,i)=>`
+    <div class="news-item${i===0?' news-featured':''}">
+      <div class="news-date">📅 ${fmt(n.date)} · ${n.author}</div>
+      <h3>${n.title}</h3>
+      <p>${n.content}</p>
+    </div>`).join('');
 }
 
-function renderHomeNews() {
-  const el = document.getElementById('homeNewsList');
-  el.innerHTML = DB.news.slice(0,3).map(n => `
+function renderNews(){
+  document.getElementById('newsList').innerHTML=DB.news.map(n=>`
     <div class="news-item">
       <div class="news-date">📅 ${fmt(n.date)} · ${n.author}</div>
       <h3>${n.title}</h3>
@@ -662,140 +820,122 @@ function renderHomeNews() {
     </div>`).join('');
 }
 
-function renderNews() {
-  document.getElementById('newsList').innerHTML = DB.news.map(n => `
-    <div class="news-item">
-      <div class="news-date">📅 ${fmt(n.date)} · ${n.author}</div>
-      <h3>${n.title}</h3>
-      <p>${n.content}</p>
-    </div>`).join('');
-}
-
-function renderTeachers() {
-  document.getElementById('teacherGrid').innerHTML = DB.teachers.map(t => `
+let teacherFilter='Все';
+function renderTeachers(){
+  const cats=['Все',...new Set(DB.teachers.map(t=>t.cat))];
+  document.getElementById('teacherFilters').innerHTML=cats.map(c=>
+    `<button class="flt-btn${c===teacherFilter?' active':''}" onclick="setTeacherFilter('${c}')">${c}</button>`
+  ).join('');
+  const list=teacherFilter==='Все'?DB.teachers:DB.teachers.filter(t=>t.cat===teacherFilter);
+  document.getElementById('teacherGrid').innerHTML=list.map(t=>`
     <div class="teacher-card">
-      <div class="teacher-avatar"><img src="323.png" alt="Фото: ${t.name}"></div>
-      <h4>${t.name}</h4>
-      <div class="teacher-job">${t.job}</div>
-      <div class="teacher-phone">${t.phone}</div>
+      <div class="tc-top">
+        <div class="tc-avatar"><img src="323.png" alt="Фото: ${t.name}"></div>
+        <div class="tc-name">${t.name}</div>
+      </div>
+      <div class="tc-body">
+        <div class="tc-exp">Стаж: ${t.exp} лет</div>
+        <div class="tc-job">${t.job}</div>
+        <div class="tc-bio">${t.bio}</div>
+        <div class="tc-subjects">${t.subjects.map(s=>`<span>${s}</span>`).join('')}</div>
+        <div class="tc-phone" style="margin-top:10px">📞 ${t.phone}</div>
+      </div>
     </div>`).join('');
 }
+function setTeacherFilter(c){teacherFilter=c;renderTeachers();}
 
-function renderClasses() {
-  document.getElementById('classesBody').innerHTML = DB.classes.map(c => `
-    <tr>
-      <td><strong>${c.name}</strong></td>
-      <td>${c.type}</td>
-      <td>${c.students}</td>
-      <td>${c.teacher}</td>
-      <td>${c.year}</td>
-    </tr>`).join('');
+function renderClasses(){
+  document.getElementById('classesBody').innerHTML=DB.classes.map(c=>`
+    <tr><td><strong>${c.name}</strong></td><td>${c.type}</td><td>${c.students}</td><td>${c.teacher}</td><td>${c.year}</td></tr>`).join('');
 }
 
-function renderSchedule() {
-  const days = [...new Set(DB.schedule.map(s => s.day + '|' + s.date))];
-  document.getElementById('scheduleContainer').innerHTML = days.map(d => {
-    const [day, date] = d.split('|');
-    const rows = DB.schedule.filter(s => s.day === day && s.date === date);
-    return `<div class="schedule-day">
-      <h4>${day}, ${date}.2025</h4>
-      <table class="data-table">
-        <thead><tr><th>Время</th><th>Класс</th><th>Предмет</th><th>Учитель</th><th>Кабинет</th></tr></thead>
-        <tbody>${rows.map(r=>`<tr>
-          <td>${r.start} – ${r.end}</td>
-          <td>${r.className}</td>
-          <td>${r.subject}</td>
-          <td>${r.teacher}</td>
-          <td>${r.room}</td>
-        </tr>`).join('')}</tbody>
-      </table>
-    </div>`;
+function renderSchedule(){
+  const days=[...new Set(DB.schedule.map(s=>s.day+'|'+s.date))];
+  document.getElementById('scheduleContainer').innerHTML=days.map(d=>{
+    const[day,date]=d.split('|');
+    const rows=DB.schedule.filter(s=>s.day===day&&s.date===date);
+    return`<div class="schedule-day"><h4>${day}, ${date}.2025</h4>
+      <table class="data-table"><thead><tr><th>Время</th><th>Класс</th><th>Предмет</th><th>Учитель</th><th>Кабинет</th></tr></thead>
+      <tbody>${rows.map(r=>`<tr><td>${r.start}–${r.end}</td><td>${r.className}</td><td>${r.subject}</td><td>${r.teacher}</td><td>${r.room}</td></tr>`).join('')}</tbody></table></div>`;
   }).join('');
 }
 
-function renderDocuments() {
-  document.getElementById('docsBody').innerHTML = DB.documents.map(d => `
-    <tr>
-      <td>📄 ${d.title}</td>
-      <td>${d.category}</td>
-      <td>${d.date}</td>
-    </tr>`).join('');
+function renderDocuments(){
+  document.getElementById('docsBody').innerHTML=DB.documents.map(d=>`
+    <tr><td>📄 ${d.title}</td><td>${d.category}</td><td>${d.date}</td></tr>`).join('');
 }
 
-function renderHotlines() {
-  document.getElementById('hotlinesList').innerHTML = DB.hotlines.map(h => `
-    <div class="hotline-row">
-      <span class="hl-topic">${h.topic}</span>
-      <span class="hl-phone">${h.phone}</span>
-    </div>`).join('');
+function renderHotlines(){
+  document.getElementById('hotlinesList').innerHTML=DB.hotlines.map(h=>`
+    <div class="hotline-row"><span class="hl-topic">${h.topic}</span><span class="hl-phone">${h.phone}</span></div>`).join('');
 }
 
-function renderAdmin() {
-  // news managed by addNews()
-  // users table
-  document.getElementById('usersBody').innerHTML = DB.users.map(u => `
-    <tr>
-      <td>${u.login}</td>
-      <td>${u.name}</td>
-      <td>${{admin:'Администратор',teacher:'Учитель',user:'Пользователь'}[u.role]}</td>
-      <td>${u.active ? '✅ Активен' : '❌ Заблокирован'}</td>
-      <td><button class="btn btn-sm ${u.active?'btn-danger':'btn-primary'}" onclick="toggleUser(${u.id})">${u.active?'Блокировать':'Активировать'}</button></td>
-    </tr>`).join('');
-  // stats
-  document.getElementById('statsBody').innerHTML = [
-    ['Пользователи',   DB.users.length],
-    ['Новости',        DB.news.length],
-    ['Сотрудники',     DB.teachers.length],
-    ['Классы',         DB.classes.length],
-    ['Документы',      DB.documents.length],
-    ['Горячие линии',  DB.hotlines.length],
-    ['Расписание',     DB.schedule.length],
+function renderAdmin(){
+  document.getElementById('usersBody').innerHTML=DB.users.map(u=>`
+    <tr><td>${u.login}</td><td>${u.name}</td>
+    <td>{{admin:'Администратор',teacher:'Учитель',user:'Пользователь'}[u.role]||u.role}</td>
+    <td>${u.active?'✅ Активен':'❌ Блок.'}</td>
+    <td><button class="btn btn-sm ${u.active?'btn-d':'btn-p'}" onclick="toggleUser(${u.id})">${u.active?'Блокировать':'Активировать'}</button></td></tr>`
+  ).join('').replace(/\{\{(.+?)\}\}/g,(_,e)=>{try{return eval('('+e+')')}catch{return ''}});
+  document.getElementById('statsBody').innerHTML=[
+    ['Пользователи',DB.users.length],['Новости',DB.news.length],
+    ['Сотрудники',DB.teachers.length],['Классы',DB.classes.length],
+    ['Документы',DB.documents.length],['Горячие линии',DB.hotlines.length],
+    ['Расписание',DB.schedule.length],
   ].map(([t,c])=>`<tr><td>${t}</td><td>${c}</td></tr>`).join('');
 }
 
-function addNews() {
-  const title   = document.getElementById('newTitle').value.trim();
-  const content = document.getElementById('newContent').value.trim();
-  const date    = document.getElementById('newDate').value;
-  if (!title || !content || !date) { alert('Заполните все поля'); return; }
-  DB.news.unshift({ id: Date.now(), title, date, content, author: currentUser.name });
-  document.getElementById('newTitle').value = document.getElementById('newContent').value = document.getElementById('newDate').value = '';
-  renderHomeNews(); renderNews(); renderAdmin();
-  alert('Новость успешно опубликована!');
+// Fix renderAdmin roles display
+function renderAdmin(){
+  const roles={admin:'Администратор',teacher:'Учитель',user:'Пользователь'};
+  document.getElementById('usersBody').innerHTML=DB.users.map(u=>`
+    <tr><td>${u.login}</td><td>${u.name}</td><td>${roles[u.role]||u.role}</td>
+    <td>${u.active?'✅ Активен':'❌ Заблокирован'}</td>
+    <td><button class="btn btn-sm ${u.active?'btn-d':'btn-p'}" onclick="toggleUser(${u.id})">${u.active?'Блокировать':'Активировать'}</button></td></tr>`
+  ).join('');
+  document.getElementById('statsBody').innerHTML=[
+    ['Пользователи',DB.users.length],['Новости',DB.news.length],
+    ['Сотрудники',DB.teachers.length],['Классы',DB.classes.length],
+    ['Документы',DB.documents.length],['Горячие линии',DB.hotlines.length],
+    ['Расписание',DB.schedule.length],
+  ].map(([t,c])=>`<tr><td>${t}</td><td>${c}</td></tr>`).join('');
 }
 
-function addUser() {
-  const login = document.getElementById('newUserLogin').value.trim();
-  const pass  = document.getElementById('newUserPass').value;
-  const name  = document.getElementById('newUserName').value.trim();
-  const role  = document.getElementById('newUserRole').value;
-  if (!login || !pass || !name) { alert('Заполните все поля'); return; }
-  if (DB.users.find(u=>u.login===login)) { alert('Пользователь с таким логином уже существует'); return; }
-  DB.users.push({ id: Date.now(), login, pass, role, name, email:'', active:true });
-  document.getElementById('newUserLogin').value = document.getElementById('newUserPass').value = document.getElementById('newUserName').value = '';
+function addNews(){
+  const title=document.getElementById('newTitle').value.trim();
+  const content=document.getElementById('newContent').value.trim();
+  const date=document.getElementById('newDate').value;
+  if(!title||!content||!date){alert('Заполните все поля');return;}
+  DB.news.unshift({id:Date.now(),title,date,content,author:currentUser.name});
+  document.getElementById('newTitle').value=document.getElementById('newContent').value=document.getElementById('newDate').value='';
+  renderHomeNews();renderNews();renderAdmin();
+  alert('Новость опубликована!');
+}
+
+function addUser(){
+  const login=document.getElementById('nUL').value.trim();
+  const pass=document.getElementById('nUP').value;
+  const name=document.getElementById('nUN').value.trim();
+  const role=document.getElementById('nUR').value;
+  if(!login||!pass||!name){alert('Заполните все поля');return;}
+  if(DB.users.find(u=>u.login===login)){alert('Логин уже занят');return;}
+  DB.users.push({id:Date.now(),login,pass,role,name,email:'',active:true});
+  document.getElementById('nUL').value=document.getElementById('nUP').value=document.getElementById('nUN').value='';
+  renderAdmin();alert('Пользователь создан!');
+}
+
+function toggleUser(id){
+  const u=DB.users.find(u=>u.id===id);
+  if(!u)return;
+  if(u.login==='admin'){alert('Нельзя заблокировать администратора');return;}
+  u.active=!u.active;
+  if(currentUser&&currentUser.id===id&&!u.active)logout();
   renderAdmin();
-  alert('Пользователь создан!');
 }
 
-function toggleUser(id) {
-  const u = DB.users.find(u=>u.id===id);
-  if (!u) return;
-  if (u.login === 'admin') { alert('Нельзя заблокировать администратора'); return; }
-  u.active = !u.active;
-  if (currentUser && currentUser.id === id && !u.active) logout();
-  renderAdmin();
-}
-
-// =============================================
-// INIT
-// =============================================
-renderHomeNews();
-renderNews();
-renderTeachers();
-renderClasses();
-renderSchedule();
-renderDocuments();
-renderHotlines();
+// ══════════ INIT ══════════
+renderHomeNews();renderNews();renderTeachers();renderClasses();
+renderSchedule();renderDocuments();renderHotlines();
 </script>
 </body>
 </html>
