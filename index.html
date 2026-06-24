@@ -81,6 +81,15 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .survey-body .survey-title .sarrow{font-size:18px;margin-left:auto;opacity:.8}
 .survey-body .survey-sub{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.75);margin-top:6px;letter-spacing:.06em;text-transform:uppercase}
 
+/* ── PROMO BANNERS ── */
+.promo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+.promo-card{background:var(--white);border:1px solid var(--border);border-left:5px solid var(--promo);border-radius:var(--r);padding:18px 20px;display:flex;align-items:center;gap:16px;box-shadow:var(--sh);cursor:pointer;transition:transform .15s,box-shadow .2s}
+.promo-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,75,140,.14)}
+.promo-card .promo-icon{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#eef4fb;font-size:24px;flex-shrink:0}
+.promo-card h3{font-size:15px;color:var(--blue);margin-bottom:4px}
+.promo-card p{font-size:12px;color:var(--muted);line-height:1.45}
+.promo-card .promo-go{margin-left:auto;color:var(--promo);font-size:22px;font-weight:700}
+
 /* ── NEWS HOME ── */
 .home-news-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
 .news-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;box-shadow:var(--sh)}
@@ -133,6 +142,10 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .data-table td{padding:9px 14px;border-bottom:1px solid var(--blue-pale);font-size:13px}
 .data-table tr:last-child td{border-bottom:none}
 .data-table tr:hover td{background:var(--blue-pale)}
+.doc-link{color:var(--blue);font-weight:700;text-decoration:none}
+.doc-link:hover{text-decoration:underline}
+.doc-open{display:inline-block;color:#fff;background:var(--blue);padding:5px 11px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+.doc-open:hover{background:var(--blue-light)}
 
 /* HOT LINES */
 .hotlines{display:flex;flex-direction:column;gap:10px;max-width:700px}
@@ -180,6 +193,11 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 /* ADMIN */
 .adm-section{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:18px;box-shadow:var(--sh)}
 .adm-section h3{font-size:16px;font-weight:700;color:var(--blue);margin-bottom:14px}
+.admin-news-list{display:flex;flex-direction:column;gap:10px}
+.admin-news-row{display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-radius:6px;padding:12px 14px;background:var(--bg)}
+.admin-news-row .admin-news-info{min-width:0;flex:1}
+.admin-news-row h4{font-size:13.5px;color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-news-row p{font-size:11.5px;color:var(--muted)}
 .af label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;margin-top:10px;font-weight:600}
 .af input,.af textarea,.af select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;outline:none}
 .af textarea{height:80px;resize:vertical;font-family:inherit}
@@ -213,7 +231,7 @@ footer a:hover{opacity:1;text-decoration:underline}
   .qcards{grid-template-columns:repeat(3,1fr)}
   .hero-split{grid-template-columns:1fr}
   .hero-right{display:none}
-  .banners-row,.survey-row,.home-news-grid{grid-template-columns:1fr}
+  .banners-row,.survey-row,.promo-grid,.home-news-grid{grid-template-columns:1fr}
   .news-featured{grid-column:span 1}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr}
@@ -410,6 +428,30 @@ footer a:hover{opacity:1;text-decoration:underline}
     </div>
   </div>
 
+  <!-- SCHOOL PROMO BANNERS -->
+  <div class="promo-grid">
+    <div class="promo-card" style="--promo:#2d7a4f" onclick="showPage('contacts',null)">
+      <div class="promo-icon">🎓</div>
+      <div><h3>Прием на 2026/27 учебный год</h3><p>Контакты приемной и информация для родителей будущих учеников.</p></div>
+      <span class="promo-go">→</span>
+    </div>
+    <div class="promo-card" style="--promo:#c25a18" onclick="showPage('documents',null)">
+      <div class="promo-icon">📂</div>
+      <div><h3>Документы для родителей</h3><p>Устав, образовательные программы, правила приема и отчеты.</p></div>
+      <span class="promo-go">→</span>
+    </div>
+    <div class="promo-card" style="--promo:#8b3fa8" onclick="showPage('hotlines',null)">
+      <div class="promo-icon">🛡️</div>
+      <div><h3>Безопасность и поддержка</h3><p>Горячие линии по вопросам образования и защиты прав ребенка.</p></div>
+      <span class="promo-go">→</span>
+    </div>
+    <div class="promo-card" style="--promo:#197d8c" onclick="showPage('schedule',null)">
+      <div class="promo-icon">🗓️</div>
+      <div><h3>Расписание 2026</h3><p>Актуальная учебная неделя, время занятий, кабинеты и педагоги.</p></div>
+      <span class="promo-go">→</span>
+    </div>
+  </div>
+
   <!-- NEWS -->
   <h2 class="section-title">Последние новости</h2>
   <div class="home-news-grid" id="homeNewsList"></div>
@@ -454,7 +496,6 @@ footer a:hover{opacity:1;text-decoration:underline}
       <h3>Коткина Наталья Александровна</h3>
       <div class="dir-role">Директор центра</div>
       <p>Директор ОГБОУ с 2010 года. Отличник народного просвещения. Автор многочисленных методических разработок для детей с нарушением слуха. Под её руководством центр стал победителем регионального конкурса «Лучшая инклюзивная школа» (2021, 2023).</p>
-      <p>Дорогие друзья! Наш Центр — пространство возможностей и благополучия, то место, где ребёнок получает качественные знания, твёрдые социальные навыки, погружается в атмосферу творчества. Добро пожаловать в наш Центр образования!</p>
       <div class="dir-contact">📞 8 (4812) 35-85-52 &nbsp;·&nbsp; ✉️ spezshkola1-2@yandex.ru</div>
     </div>
   </div>
@@ -479,7 +520,7 @@ footer a:hover{opacity:1;text-decoration:underline}
 <!-- ══════════ SCHEDULE ══════════ -->
 <div class="page" id="page-schedule">
   <h2 class="section-title">Расписание занятий</h2>
-  <p class="section-sub">Неделя 2–6 июня 2025 г.</p>
+  <p class="section-sub">Неделя 1–5 июня 2026 г.</p>
   <div id="scheduleContainer"></div>
 </div>
 
@@ -492,9 +533,9 @@ footer a:hover{opacity:1;text-decoration:underline}
 <!-- ══════════ DOCUMENTS ══════════ -->
 <div class="page" id="page-documents">
   <h2 class="section-title">Документы</h2>
-  <p class="section-sub">Нормативные документы, образовательные программы, локальные акты</p>
+  <p class="section-sub">Официальные PDF-файлы с сайта образовательной организации</p>
   <table class="data-table">
-    <thead><tr><th>Название</th><th>Категория</th><th>Дата</th></tr></thead>
+    <thead><tr><th>Название</th><th>Категория</th><th>Дата</th><th>Файл</th></tr></thead>
     <tbody id="docsBody"></tbody>
   </table>
 </div>
@@ -545,6 +586,10 @@ footer a:hover{opacity:1;text-decoration:underline}
     </div>
   </div>
   <div class="adm-section">
+    <h3>🗞️ Управление новостями</h3>
+    <div class="admin-news-list" id="adminNewsList"></div>
+  </div>
+  <div class="adm-section">
     <h3>👤 Пользователи системы</h3>
     <table class="data-table"><thead><tr><th>Логин</th><th>ФИО</th><th>Роль</th><th>Статус</th><th>Действие</th></tr></thead>
     <tbody id="usersBody"></tbody></table>
@@ -593,7 +638,7 @@ footer a:hover{opacity:1;text-decoration:underline}
       <a href="https://max.ru/id6731032577_gos" target="_blank">МАХ</a>
     </div>
   </div>
-  <div class="foot-bottom">© 2025 ОГБОУ Центр образования г. Смоленска. Все права защищены.</div>
+  <div class="foot-bottom">© 2026 ОГБОУ Центр образования г. Смоленска. Все права защищены.</div>
 </footer>
 
 <!-- AUTH MODAL -->
@@ -681,27 +726,27 @@ const DB = {
     {id:5,name:'9 «А»',type:'Профильный',            students:11,teacher:'Петров А.С.',    year:2016},
   ],
   schedule:[
-    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'201'},
-    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'201'},
-    {day:'Понедельник',date:'02.06',classId:1,className:'1 «А»',subject:'Жестовый язык',       teacher:'Новикова Т.А.',start:'10:40',end:'11:20',room:'105'},
-    {day:'Понедельник',date:'02.06',classId:2,className:'3 «Б»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'202'},
-    {day:'Понедельник',date:'02.06',classId:2,className:'3 «Б»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'202'},
-    {day:'Вторник',    date:'03.06',classId:1,className:'1 «А»',subject:'Физическая культура', teacher:'Морозов И.Н.', start:'09:00',end:'09:40',room:'Спортзал'},
-    {day:'Вторник',    date:'03.06',classId:1,className:'1 «А»',subject:'ИЗО',                 teacher:'Волкова А.И.', start:'09:50',end:'10:30',room:'Мастерская'},
-    {day:'Среда',      date:'04.06',classId:3,className:'5 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'203'},
-    {day:'Среда',      date:'04.06',classId:3,className:'5 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'203'},
-    {day:'Четверг',    date:'05.06',classId:4,className:'7 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:00',end:'09:40',room:'204'},
-    {day:'Четверг',    date:'05.06',classId:4,className:'7 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:50',end:'10:30',room:'204'},
-    {day:'Пятница',    date:'06.06',classId:5,className:'9 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'205'},
-    {day:'Пятница',    date:'06.06',classId:5,className:'9 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'205'},
+    {day:'Понедельник',date:'01.06',classId:1,className:'1 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'201'},
+    {day:'Понедельник',date:'01.06',classId:1,className:'1 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'201'},
+    {day:'Понедельник',date:'01.06',classId:1,className:'1 «А»',subject:'Жестовый язык',       teacher:'Новикова Т.А.',start:'10:40',end:'11:20',room:'105'},
+    {day:'Понедельник',date:'01.06',classId:2,className:'3 «Б»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'202'},
+    {day:'Понедельник',date:'01.06',classId:2,className:'3 «Б»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'202'},
+    {day:'Вторник',    date:'02.06',classId:1,className:'1 «А»',subject:'Физическая культура', teacher:'Морозов И.Н.', start:'09:00',end:'09:40',room:'Спортзал'},
+    {day:'Вторник',    date:'02.06',classId:1,className:'1 «А»',subject:'ИЗО',                 teacher:'Волкова А.И.', start:'09:50',end:'10:30',room:'Мастерская'},
+    {day:'Среда',      date:'03.06',classId:3,className:'5 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'203'},
+    {day:'Среда',      date:'03.06',classId:3,className:'5 «А»',subject:'Русский язык',        teacher:'Сидорова М.И.',start:'09:50',end:'10:30',room:'203'},
+    {day:'Четверг',    date:'04.06',classId:4,className:'7 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:00',end:'09:40',room:'204'},
+    {day:'Четверг',    date:'04.06',classId:4,className:'7 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:50',end:'10:30',room:'204'},
+    {day:'Пятница',    date:'05.06',classId:5,className:'9 «А»',subject:'Математика',         teacher:'Петров А.С.',  start:'09:00',end:'09:40',room:'205'},
+    {day:'Пятница',    date:'05.06',classId:5,className:'9 «А»',subject:'История',             teacher:'Смирнов О.В.',start:'09:50',end:'10:30',room:'205'},
   ],
   documents:[
-    {title:'Устав образовательной организации',          category:'Нормативные документы',    date:'01.09.2024'},
-    {title:'Лицензия на образовательную деятельность',   category:'Нормативные документы',    date:'01.09.2024'},
-    {title:'Адаптированная образовательная программа',   category:'Образовательные программы',date:'01.09.2024'},
-    {title:'Правила приёма обучающихся',                 category:'Локальные акты',           date:'01.09.2024'},
-    {title:'Положение о психолого-педагогической службе',category:'Локальные акты',           date:'01.09.2024'},
-    {title:'Отчёт о результатах самообследования 2024',  category:'Отчёты',                   date:'15.01.2025'},
+    {title:'Устав образовательной организации',category:'Нормативные документы',date:'2024',file:'docs/ustav.pdf'},
+    {title:'Выписка из реестра аккредитованных организаций',category:'Нормативные документы',date:'2025',file:'docs/accreditation.pdf'},
+    {title:'Адаптированная основная образовательная программа НОО',category:'Образовательные программы',date:'2024–2025',file:'docs/aoop.pdf'},
+    {title:'Правила приема обучающихся',category:'Локальные акты',date:'2026',file:'docs/pravila_priema_2026.pdf'},
+    {title:'Положение о педагогическом совете',category:'Локальные акты',date:'2025',file:'docs/pedagogicheskiy_sovet.pdf'},
+    {title:'Самообследование школы за 2025–2026 учебный год',category:'Отчеты',date:'2026',file:'docs/samoobsledovanie_2025_2026.pdf'},
   ],
   hotlines:[
     {topic:'Организация работы общеобразовательных организаций',phone:'8 (4812) 29-27-55'},
@@ -715,6 +760,24 @@ const DB = {
     {topic:'Телефон доверия (психиатрическая больница)',         phone:'8 (800) 707-95-91'},
   ]
 };
+
+const NEWS_STORAGE_KEY='school_website_news_v1';
+function loadStoredNews(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(NEWS_STORAGE_KEY));
+    if(Array.isArray(saved)) DB.news=saved;
+  }catch(error){
+    console.warn('Не удалось загрузить сохраненные новости',error);
+  }
+}
+function saveNews(){
+  try{
+    localStorage.setItem(NEWS_STORAGE_KEY,JSON.stringify(DB.news));
+  }catch(error){
+    console.warn('Не удалось сохранить новости',error);
+  }
+}
+loadStoredNews();
 
 // ══════════ AUTH ══════════
 let currentUser = null;
@@ -856,7 +919,7 @@ function renderSchedule(){
   document.getElementById('scheduleContainer').innerHTML=days.map(d=>{
     const[day,date]=d.split('|');
     const rows=DB.schedule.filter(s=>s.day===day&&s.date===date);
-    return`<div class="schedule-day"><h4>${day}, ${date}.2025</h4>
+    return`<div class="schedule-day"><h4>${day}, ${date}.2026</h4>
       <table class="data-table"><thead><tr><th>Время</th><th>Класс</th><th>Предмет</th><th>Учитель</th><th>Кабинет</th></tr></thead>
       <tbody>${rows.map(r=>`<tr><td>${r.start}–${r.end}</td><td>${r.className}</td><td>${r.subject}</td><td>${r.teacher}</td><td>${r.room}</td></tr>`).join('')}</tbody></table></div>`;
   }).join('');
@@ -864,7 +927,7 @@ function renderSchedule(){
 
 function renderDocuments(){
   document.getElementById('docsBody').innerHTML=DB.documents.map(d=>`
-    <tr><td>📄 ${d.title}</td><td>${d.category}</td><td>${d.date}</td></tr>`).join('');
+    <tr><td><a class="doc-link" href="${d.file}" target="_blank" rel="noopener">📄 ${d.title}</a></td><td>${d.category}</td><td>${d.date}</td><td><a class="doc-open" href="${d.file}" target="_blank" rel="noopener">Открыть PDF</a></td></tr>`).join('');
 }
 
 function renderHotlines(){
@@ -890,6 +953,11 @@ function renderAdmin(){
 // Fix renderAdmin roles display
 function renderAdmin(){
   const roles={admin:'Администратор',teacher:'Учитель',user:'Пользователь'};
+  document.getElementById('adminNewsList').innerHTML=DB.news.length?DB.news.map(n=>`
+    <div class="admin-news-row">
+      <div class="admin-news-info"><h4>${n.title}</h4><p>${fmt(n.date)} · ${n.author}</p></div>
+      <button class="btn btn-sm btn-d" type="button" onclick="deleteNews(${n.id})">Удалить</button>
+    </div>`).join(''):'<p style="color:var(--muted);font-size:13px">Новостей пока нет.</p>';
   document.getElementById('usersBody').innerHTML=DB.users.map(u=>`
     <tr><td>${u.login}</td><td>${u.name}</td><td>${roles[u.role]||u.role}</td>
     <td>${u.active?'✅ Активен':'❌ Заблокирован'}</td>
@@ -909,9 +977,18 @@ function addNews(){
   const date=document.getElementById('newDate').value;
   if(!title||!content||!date){alert('Заполните все поля');return;}
   DB.news.unshift({id:Date.now(),title,date,content,author:currentUser.name});
+  saveNews();
   document.getElementById('newTitle').value=document.getElementById('newContent').value=document.getElementById('newDate').value='';
   renderHomeNews();renderNews();renderAdmin();
   alert('Новость опубликована!');
+}
+
+function deleteNews(id){
+  const news=DB.news.find(n=>n.id===id);
+  if(!news||!confirm(`Удалить новость «${news.title}»?`))return;
+  DB.news=DB.news.filter(n=>n.id!==id);
+  saveNews();
+  renderHomeNews();renderNews();renderAdmin();
 }
 
 function addUser(){
