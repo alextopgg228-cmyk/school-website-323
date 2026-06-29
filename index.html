@@ -50,13 +50,6 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .hero-right .gosuslugi-label{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;line-height:1.3}
 .hero-right .gosuslugi-label span{color:var(--blue-light)}
 
-/* ── QUICK CARDS ── */
-.qcards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
-.qcard{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 12px;text-align:center;box-shadow:var(--sh);cursor:pointer;transition:box-shadow .2s,transform .15s}
-.qcard:hover{box-shadow:0 4px 18px rgba(26,75,140,.14);transform:translateY(-2px)}
-.qcard .qi{font-size:26px;margin-bottom:8px}
-.qcard h3{font-size:12.5px;font-weight:700;color:var(--blue);line-height:1.3}
-
 /* ── BANNERS ROW ── */
 .banners-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .banner{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);position:relative;cursor:pointer;min-height:90px;display:flex;align-items:center}
@@ -147,6 +140,13 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .doc-open{display:inline-block;color:#fff;background:var(--blue);padding:5px 11px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
 .doc-open:hover{background:var(--blue-light)}
 
+/* CLASS FILTERS */
+.class-filter-panel{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:16px;margin-bottom:12px}
+.class-filter-panel label{display:block;font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.class-filter-panel input,.class-filter-panel select{width:100%;height:40px;border:1px solid var(--border);border-radius:6px;background:#fff;padding:0 12px;font-size:13.5px;color:var(--text);outline:none}
+.class-filter-panel input:focus,.class-filter-panel select:focus{border-color:var(--blue-light);box-shadow:0 0 0 3px rgba(37,99,192,.12)}
+.class-result-note{font-size:13px;color:var(--muted);margin:0 0 10px 2px}
+
 /* HOT LINES */
 .hotlines{display:flex;flex-direction:column;gap:10px;max-width:700px}
 .hotline-row{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:12px 18px}
@@ -160,6 +160,9 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .contact-block p{font-size:13.5px;color:var(--muted);margin-bottom:5px}
 .contact-block a{color:var(--blue-light);text-decoration:none}
 #page-contacts .hero-split{margin-top:0;margin-bottom:24px}
+.contacts-hotlines{max-width:740px;margin-top:24px;background:var(--blue-pale);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.contacts-hotlines h3{font-size:18px;color:var(--blue);margin-bottom:4px}
+.contacts-hotlines>p{font-size:13.5px;color:var(--muted);margin-bottom:14px}
 
 /* SCHEDULE */
 .schedule-day{margin-bottom:22px}
@@ -228,7 +231,6 @@ footer a:hover{opacity:1;text-decoration:underline}
 .feed-modal input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;margin-bottom:12px;outline:none}
 
 @media(max-width:900px){
-  .qcards{grid-template-columns:repeat(3,1fr)}
   .hero-split{grid-template-columns:1fr}
   .hero-right{display:none}
   .banners-row,.survey-row,.promo-grid,.home-news-grid{grid-template-columns:1fr}
@@ -236,6 +238,7 @@ footer a:hover{opacity:1;text-decoration:underline}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr}
   .contacts-grid{grid-template-columns:1fr}
+  .class-filter-panel{grid-template-columns:1fr}
   .director-block{grid-template-columns:1fr;text-align:center}
   .dir-avatar{margin:0 auto}
 }
@@ -243,7 +246,6 @@ footer a:hover{opacity:1;text-decoration:underline}
   .hdr{padding:10px 14px;flex-wrap:wrap}
   .hdr-contacts{display:none}
   main{padding:14px 12px 40px}
-  .qcards{grid-template-columns:repeat(2,1fr)}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
   .teacher-grid{grid-template-columns:1fr}
 }
@@ -275,7 +277,6 @@ footer a:hover{opacity:1;text-decoration:underline}
     <li><a href="#" onclick="showPage('schedule',this)">Расписание</a></li>
     <li><a href="#" onclick="showPage('news',this)">Новости</a></li>
     <li><a href="#" onclick="showPage('documents',this)">Документы</a></li>
-    <li><a href="#" onclick="showPage('hotlines',this)">Горячие линии</a></li>
     <li><a href="#" onclick="showPage('contacts',this)">Контакты</a></li>
     <li id="adminNavItem" style="display:none"><a href="#" onclick="showPage('admin',this)" style="background:rgba(224,92,26,.35)">⚙ Панель</a></li>
   </ul>
@@ -373,16 +374,6 @@ footer a:hover{opacity:1;text-decoration:underline}
     </div>
   </div>
 
-  <!-- QUICK NAV CARDS -->
-  <div class="qcards">
-    <div class="qcard" onclick="showPage('about',null)"><div class="qi">🏛️</div><h3>О центре</h3></div>
-    <div class="qcard" onclick="showPage('teachers',null)"><div class="qi">👩‍🏫</div><h3>Педагоги</h3></div>
-    <div class="qcard" onclick="showPage('schedule',null)"><div class="qi">📅</div><h3>Расписание</h3></div>
-    <div class="qcard" onclick="showPage('news',null)"><div class="qi">📰</div><h3>Новости</h3></div>
-    <div class="qcard" onclick="showPage('documents',null)"><div class="qi">📄</div><h3>Документы</h3></div>
-    <div class="qcard" onclick="showPage('contacts',null)"><div class="qi">📞</div><h3>Контакты</h3></div>
-  </div>
-
   <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">Лет работы</div></div>
@@ -440,7 +431,7 @@ footer a:hover{opacity:1;text-decoration:underline}
       <div><h3>Документы для родителей</h3><p>Устав, образовательные программы, правила приема и отчеты.</p></div>
       <span class="promo-go">→</span>
     </div>
-    <div class="promo-card" style="--promo:#8b3fa8" onclick="showPage('hotlines',null)">
+    <div class="promo-card" style="--promo:#8b3fa8" onclick="showPage('contacts',null)">
       <div class="promo-icon">🛡️</div>
       <div><h3>Безопасность и поддержка</h3><p>Горячие линии по вопросам образования и защиты прав ребенка.</p></div>
       <span class="promo-go">→</span>
@@ -511,6 +502,21 @@ footer a:hover{opacity:1;text-decoration:underline}
 <div class="page" id="page-classes">
   <h2 class="section-title">Наши классы</h2>
   <p class="section-sub">Адаптированные образовательные программы для каждого ребёнка</p>
+  <div class="class-filter-panel">
+    <div class="class-search">
+      <label for="classSearch">Поиск</label>
+      <input type="search" id="classSearch" placeholder="Класс, тип или классный руководитель" oninput="setClassFilter('query',this.value)">
+    </div>
+    <div>
+      <label for="classTypeFilter">Тип обучения</label>
+      <select id="classTypeFilter" onchange="setClassFilter('type',this.value)"></select>
+    </div>
+    <div>
+      <label for="classYearFilter">Год основания</label>
+      <select id="classYearFilter" onchange="setClassFilter('year',this.value)"></select>
+    </div>
+  </div>
+  <div class="class-result-note" id="classesResultNote"></div>
   <table class="data-table">
     <thead><tr><th>Класс</th><th>Тип обучения</th><th>Учеников</th><th>Классный руководитель</th><th>Год основания</th></tr></thead>
     <tbody id="classesBody"></tbody>
@@ -540,13 +546,6 @@ footer a:hover{opacity:1;text-decoration:underline}
   </table>
 </div>
 
-<!-- ══════════ HOTLINES ══════════ -->
-<div class="page" id="page-hotlines">
-  <h2 class="section-title">Горячие линии</h2>
-  <p class="section-sub">Телефоны для обращений по вопросам образования и защиты прав</p>
-  <div class="hotlines" id="hotlinesList"></div>
-</div>
-
 <!-- ══════════ CONTACTS ══════════ -->
 <div class="page" id="page-contacts">
   <h2 class="section-title">Контакты</h2>
@@ -569,6 +568,11 @@ footer a:hover{opacity:1;text-decoration:underline}
       <p><a href="https://vk.com/eschool67" target="_blank">ВКонтакте</a></p>
       <p><a href="https://max.ru/id6731032577_gos" target="_blank">МАХ</a></p>
     </div>
+  </div>
+  <div class="contacts-hotlines">
+    <h3>Горячие линии</h3>
+    <p>Телефоны для обращений по вопросам образования и защиты прав</p>
+    <div class="hotlines" id="hotlinesList"></div>
   </div>
 </div>
 
@@ -909,10 +913,30 @@ function renderTeachers(){
 }
 function setTeacherFilter(c){teacherFilter=c;renderTeachers();}
 
-function renderClasses(){
-  document.getElementById('classesBody').innerHTML=DB.classes.map(c=>`
-    <tr><td><strong>${c.name}</strong></td><td>${c.type}</td><td>${c.students}</td><td>${c.teacher}</td><td>${c.year}</td></tr>`).join('');
+let classFilters={query:'',type:'Все',year:'Все'};
+function renderClassFilters(){
+  const typeEl=document.getElementById('classTypeFilter');
+  const yearEl=document.getElementById('classYearFilter');
+  const types=['Все',...new Set(DB.classes.map(c=>c.type))];
+  const years=['Все',...new Set(DB.classes.map(c=>String(c.year)).sort((a,b)=>b-a))];
+  typeEl.innerHTML=types.map(t=>`<option value="${t}"${t===classFilters.type?' selected':''}>${t}</option>`).join('');
+  yearEl.innerHTML=years.map(y=>`<option value="${y}"${y===classFilters.year?' selected':''}>${y}</option>`).join('');
 }
+function renderClasses(){
+  renderClassFilters();
+  const query=classFilters.query.trim().toLowerCase();
+  const list=DB.classes.filter(c=>{
+    const text=`${c.name} ${c.type} ${c.teacher} ${c.year}`.toLowerCase();
+    return (!query||text.includes(query)) &&
+      (classFilters.type==='Все'||c.type===classFilters.type) &&
+      (classFilters.year==='Все'||String(c.year)===classFilters.year);
+  });
+  document.getElementById('classesResultNote').textContent=`Найдено классов: ${list.length} из ${DB.classes.length}`;
+  document.getElementById('classesBody').innerHTML=list.length?list.map(c=>`
+    <tr><td><strong>${c.name}</strong></td><td>${c.type}</td><td>${c.students}</td><td>${c.teacher}</td><td>${c.year}</td></tr>`).join(''):
+    '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">По выбранным фильтрам классы не найдены</td></tr>';
+}
+function setClassFilter(key,value){classFilters[key]=value;renderClasses();}
 
 function renderSchedule(){
   const days=[...new Set(DB.schedule.map(s=>s.day+'|'+s.date))];
