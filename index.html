@@ -174,6 +174,11 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .about-box p{margin-bottom:14px;font-size:14.5px;line-height:1.75}
 .about-directions{background:var(--blue-pale);border-left:3px solid var(--blue);padding:16px 20px;border-radius:6px;margin:18px 0}
 .about-directions li{margin-bottom:6px;font-size:14px}
+.about-map{max-width:860px;margin-top:22px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.about-map-head{padding:18px 20px;border-bottom:1px solid var(--border)}
+.about-map-head h3{font-size:18px;color:var(--blue);margin-bottom:4px}
+.about-map-head p{font-size:13px;color:var(--muted)}
+.about-map iframe{display:block;width:100%;height:420px;border:0}
 
 /* AUTH MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;display:flex;align-items:center;justify-content:center}
@@ -201,6 +206,11 @@ main{width:100%;max-width:1140px;margin:0 auto;padding:24px 20px 52px;flex:1}
 .admin-news-row .admin-news-info{min-width:0;flex:1}
 .admin-news-row h4{font-size:13.5px;color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .admin-news-row p{font-size:11.5px;color:var(--muted)}
+.news-attachments{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.news-file{display:inline-flex;align-items:center;gap:7px;max-width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--blue-pale);color:var(--blue);font-size:12.5px;font-weight:600;text-decoration:none}
+.news-file:hover{border-color:var(--blue-light);background:#e8f0ff}
+.news-file span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file-help{font-size:12px;color:var(--muted);margin-top:6px}
 .af label{display:block;font-size:13px;color:var(--muted);margin-bottom:4px;margin-top:10px;font-weight:600}
 .af input,.af textarea,.af select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;outline:none}
 .af textarea{height:80px;resize:vertical;font-family:inherit}
@@ -248,6 +258,7 @@ footer a:hover{opacity:1;text-decoration:underline}
   main{padding:14px 12px 40px}
   .stats-bar{grid-template-columns:repeat(2,1fr)}
   .teacher-grid{grid-template-columns:1fr}
+  .about-map iframe{height:330px}
 }
 </style>
 </head>
@@ -473,6 +484,13 @@ footer a:hover{opacity:1;text-decoration:underline}
     </div>
     <p>Наш ориентир — успех и благополучие каждого обучающегося. Мы делаем всё для достижения высокого уровня качества образования всех детей — независимо от способностей и особенностей физических возможностей ребёнка.</p>
   </div>
+  <section class="about-map" aria-labelledby="mapTitle">
+    <div class="about-map-head">
+      <h3 id="mapTitle">Как нас найти</h3>
+      <p>г. Смоленск, ул. Попова, д. 56</p>
+    </div>
+    <iframe src="https://yandex.ru/map-widget/v1/?mode=search&amp;text=%D0%A1%D0%BC%D0%BE%D0%BB%D0%B5%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%9F%D0%BE%D0%BF%D0%BE%D0%B2%D0%B0%2C%2056&amp;z=16" title="Интерактивная карта: Центр образования, улица Попова, 56" loading="lazy" allowfullscreen></iframe>
+  </section>
 </div>
 
 <!-- ══════════ TEACHERS ══════════ -->
@@ -552,7 +570,7 @@ footer a:hover{opacity:1;text-decoration:underline}
   <div class="contacts-grid">
     <div class="contact-block">
       <h4>📍 Адрес</h4>
-      <p>РФ, Смоленская область, г. Смоленск</p>
+      <p>214036, РФ, Смоленская область, г. Смоленск, ул. Попова, д. 56</p>
     </div>
     <div class="contact-block">
       <h4>📞 Телефон / Факс</h4>
@@ -586,6 +604,8 @@ footer a:hover{opacity:1;text-decoration:underline}
       <label>Заголовок</label><input type="text" id="newTitle" placeholder="Введите заголовок">
       <label>Содержание</label><textarea id="newContent" placeholder="Текст новости..."></textarea>
       <label>Дата</label><input type="date" id="newDate">
+      <label>Файлы к новости</label><input type="file" id="newFiles" multiple>
+      <p class="file-help">Можно выбрать несколько файлов. Общий размер — не более 3 МБ.</p>
       <button class="btn btn-p mt12" onclick="addNews()">Опубликовать</button>
     </div>
   </div>
@@ -766,6 +786,8 @@ const DB = {
 };
 
 const NEWS_STORAGE_KEY='school_website_news_v1';
+const USERS_STORAGE_KEY='school_website_users_v1';
+const MAX_ATTACHMENTS_SIZE=3*1024*1024;
 function loadStoredNews(){
   try{
     const saved=JSON.parse(localStorage.getItem(NEWS_STORAGE_KEY));
@@ -777,11 +799,31 @@ function loadStoredNews(){
 function saveNews(){
   try{
     localStorage.setItem(NEWS_STORAGE_KEY,JSON.stringify(DB.news));
+    return true;
   }catch(error){
     console.warn('Не удалось сохранить новости',error);
+    return false;
+  }
+}
+function loadStoredUsers(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(USERS_STORAGE_KEY));
+    if(Array.isArray(saved)) DB.users=saved;
+  }catch(error){
+    console.warn('Не удалось загрузить учетные записи',error);
+  }
+}
+function saveUsers(){
+  try{
+    localStorage.setItem(USERS_STORAGE_KEY,JSON.stringify(DB.users));
+    return true;
+  }catch(error){
+    console.warn('Не удалось сохранить учетные записи',error);
+    return false;
   }
 }
 loadStoredNews();
+loadStoredUsers();
 
 // ══════════ AUTH ══════════
 let currentUser = null;
@@ -790,8 +832,9 @@ function doLogin(){
   const login=document.getElementById('loginInput').value.trim();
   const pass=document.getElementById('passInput').value;
   const err=document.getElementById('loginError');
-  const u=DB.users.find(u=>u.login===login&&u.pass===pass&&u.active);
+  const u=DB.users.find(u=>u.login===login&&u.pass===pass);
   if(!u){err.textContent='Неверный логин или пароль.';err.style.display='block';return;}
+  if(!u.active){err.textContent='Ваша учетная запись заблокирована администратором. Вход запрещен.';err.style.display='block';return;}
   err.style.display='none';
   currentUser=u; closeAuth(); updateAuthUI();
 }
@@ -810,6 +853,7 @@ function doRegister(){
   if(pass!==pass2){err.textContent='Пароли не совпадают.';err.style.display='block';return;}
   if(DB.users.find(u=>u.login===login)){err.textContent='Логин уже занят.';err.style.display='block';return;}
   DB.users.push({id:Date.now(),login,pass,role:'user',name,email,active:true});
+  saveUsers();
   suc.textContent='Регистрация успешна! Войдите в систему.';suc.style.display='block';
   ['regName','regLogin','regEmail','regPass','regPass2'].forEach(id=>document.getElementById(id).value='');
 }
@@ -870,22 +914,31 @@ function showPage(id,el){
 
 // ══════════ RENDER ══════════
 function fmt(d){const[y,m,day]=d.split('-');const mn=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];return`${+day} ${mn[+m-1]} ${y}`;}
+function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));}
+function renderAttachments(news){
+  if(!Array.isArray(news.attachments)||!news.attachments.length)return'';
+  return`<div class="news-attachments">${news.attachments.map(file=>
+    `<a class="news-file" href="${file.data}" download="${escapeHtml(file.name)}" title="Скачать ${escapeHtml(file.name)}"><span>📎 ${escapeHtml(file.name)}</span></a>`
+  ).join('')}</div>`;
+}
 
 function renderHomeNews(){
   document.getElementById('homeNewsList').innerHTML=DB.news.slice(0,4).map((n,i)=>`
     <div class="news-item${i===0?' news-featured':''}">
-      <div class="news-date">📅 ${fmt(n.date)} · ${n.author}</div>
-      <h3>${n.title}</h3>
-      <p>${n.content}</p>
+      <div class="news-date">📅 ${fmt(n.date)} · ${escapeHtml(n.author)}</div>
+      <h3>${escapeHtml(n.title)}</h3>
+      <p>${escapeHtml(n.content)}</p>
+      ${renderAttachments(n)}
     </div>`).join('');
 }
 
 function renderNews(){
   document.getElementById('newsList').innerHTML=DB.news.map(n=>`
     <div class="news-item">
-      <div class="news-date">📅 ${fmt(n.date)} · ${n.author}</div>
-      <h3>${n.title}</h3>
-      <p>${n.content}</p>
+      <div class="news-date">📅 ${fmt(n.date)} · ${escapeHtml(n.author)}</div>
+      <h3>${escapeHtml(n.title)}</h3>
+      <p>${escapeHtml(n.content)}</p>
+      ${renderAttachments(n)}
     </div>`).join('');
 }
 
@@ -979,7 +1032,7 @@ function renderAdmin(){
   const roles={admin:'Администратор',teacher:'Учитель',user:'Пользователь'};
   document.getElementById('adminNewsList').innerHTML=DB.news.length?DB.news.map(n=>`
     <div class="admin-news-row">
-      <div class="admin-news-info"><h4>${n.title}</h4><p>${fmt(n.date)} · ${n.author}</p></div>
+      <div class="admin-news-info"><h4>${escapeHtml(n.title)}</h4><p>${fmt(n.date)} · ${escapeHtml(n.author)}${n.attachments?.length?` · файлов: ${n.attachments.length}`:''}</p></div>
       <button class="btn btn-sm btn-d" type="button" onclick="deleteNews(${n.id})">Удалить</button>
     </div>`).join(''):'<p style="color:var(--muted);font-size:13px">Новостей пока нет.</p>';
   document.getElementById('usersBody').innerHTML=DB.users.map(u=>`
@@ -995,14 +1048,36 @@ function renderAdmin(){
   ].map(([t,c])=>`<tr><td>${t}</td><td>${c}</td></tr>`).join('');
 }
 
-function addNews(){
+function fileToAttachment(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve({name:file.name,type:file.type||'application/octet-stream',size:file.size,data:reader.result});
+    reader.onerror=()=>reject(new Error(`Не удалось прочитать файл ${file.name}`));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function addNews(){
   const title=document.getElementById('newTitle').value.trim();
   const content=document.getElementById('newContent').value.trim();
   const date=document.getElementById('newDate').value;
+  const fileInput=document.getElementById('newFiles');
+  const files=[...fileInput.files];
   if(!title||!content||!date){alert('Заполните все поля');return;}
-  DB.news.unshift({id:Date.now(),title,date,content,author:currentUser.name});
-  saveNews();
+  const totalSize=files.reduce((sum,file)=>sum+file.size,0);
+  if(totalSize>MAX_ATTACHMENTS_SIZE){alert('Общий размер файлов не должен превышать 3 МБ.');return;}
+  let attachments=[];
+  try{attachments=await Promise.all(files.map(fileToAttachment));}
+  catch(error){alert(error.message);return;}
+  const news={id:Date.now(),title,date,content,author:currentUser.name,attachments};
+  DB.news.unshift(news);
+  if(!saveNews()){
+    DB.news=DB.news.filter(item=>item.id!==news.id);
+    alert('Не удалось сохранить новость. Уменьшите размер прикрепленных файлов.');
+    return;
+  }
   document.getElementById('newTitle').value=document.getElementById('newContent').value=document.getElementById('newDate').value='';
+  fileInput.value='';
   renderHomeNews();renderNews();renderAdmin();
   alert('Новость опубликована!');
 }
@@ -1023,6 +1098,7 @@ function addUser(){
   if(!login||!pass||!name){alert('Заполните все поля');return;}
   if(DB.users.find(u=>u.login===login)){alert('Логин уже занят');return;}
   DB.users.push({id:Date.now(),login,pass,role,name,email:'',active:true});
+  saveUsers();
   document.getElementById('nUL').value=document.getElementById('nUP').value=document.getElementById('nUN').value='';
   renderAdmin();alert('Пользователь создан!');
 }
@@ -1032,6 +1108,7 @@ function toggleUser(id){
   if(!u)return;
   if(u.login==='admin'){alert('Нельзя заблокировать администратора');return;}
   u.active=!u.active;
+  saveUsers();
   if(currentUser&&currentUser.id===id&&!u.active)logout();
   renderAdmin();
 }
